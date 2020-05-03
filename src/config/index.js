@@ -6,7 +6,7 @@ export default {
       authSecret: '3zUOjWJd4fHzTwa'
     },
     {
-      debug: { mode: 1 }
+      debug: { mode: 0 }
     }
   ]
 };

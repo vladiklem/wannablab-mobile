@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, AsyncStorage, Alert } from 'react-native';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -12,20 +12,39 @@ export const routeName = 'LOGIN';
 const Login = props => {
   const { navigation } = props;
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const openHome = ({ user }) => navigation.navigate(HOME, { user });
 
   const login = () => {
     const now = Date.now();
     const user = {
-      id: now,
-      name,
       login: name,
-      password: now
+      password
     };
     AuthService
       .login(user)
-      .then(() => {
-        navigation.navigate(HOME);
-      })
+      .then(openHome)
+      .catch(e => console.error(e));
+  };
+
+  const signup = async () => {
+    if (password.length < 8) {
+      Alert.alert('password min length is 8 characters');
+
+      return;
+    }
+    const token = await AsyncStorage.getItem('token');
+    const user = {
+      login: name,
+      password,
+      keys: {
+        token
+      }
+    };
+    AuthService
+      .signup(user)
+      .then(openHome)
       .catch(e => console.error(e));
   };
 
@@ -37,9 +56,17 @@ const Login = props => {
         value={name}
         onChangeText={setName}
       />
+      <Input
+        value={password}
+        onChangeText={setPassword}
+      />
       <Button
-        label="Start"
+        label="Login"
         onPress={login}
+      />
+      <Button
+        label="Sign up"
+        onPress={signup}
       />
     </View>
   );
