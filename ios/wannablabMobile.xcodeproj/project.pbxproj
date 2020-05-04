@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* wannablab_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wannablab_mobileTests.m */; };
+		00E356F31AD99517003FC87E /* wannablabMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wannablabMobileTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,11 +15,11 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* wannablab_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wannablab_mobileTests.m */; };
-		482967FA33E51963D2794150 /* libPods-wannablab_mobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8141E479F5009F7160F3640E /* libPods-wannablab_mobile-tvOS.a */; };
-		8614DB64C425FEA68F8BA0FC /* libPods-wannablab_mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FDE9FB5D0EA71C362340C1 /* libPods-wannablab_mobile-tvOSTests.a */; };
-		CD8D78E71B57D86A15076CAD /* libPods-wannablab_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3DA12A93738E3C8ED2CCEB2 /* libPods-wannablab_mobile.a */; };
-		DF4A32C8E9FE9893024AF7E7 /* libPods-wannablab_mobile-wannablab_mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918457251AFFBE04F9A28B41 /* libPods-wannablab_mobile-wannablab_mobileTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* wannablabMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* wannablabMobileTests.m */; };
+		64116EA4D915C3986EB7F50F /* libPods-wannablabMobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2768664E062A286CA0FAF43D /* libPods-wannablabMobile-tvOSTests.a */; };
+		82877F1796C2E02F9440644F /* libPods-wannablabMobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C36A3B67931460138FBA008 /* libPods-wannablabMobile-tvOS.a */; };
+		C4BF78F3805785530D915747 /* libPods-wannablabMobile-wannablabMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EBF43AACB7F4885E76760CC /* libPods-wannablabMobile-wannablabMobileTests.a */; };
+		CB4F89896126B980E9D9387D /* libPods-wannablabMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8969D0EA9F68A62EBB98EB2C /* libPods-wannablabMobile.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = wannablab_mobile;
+			remoteInfo = wannablabMobile;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "wannablab_mobile-tvOS";
+			remoteInfo = "wannablabMobile-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003ED26258F84397D83E20A2 /* Pods-wannablabMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-tvOSTests/Pods-wannablabMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* wannablab_mobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wannablab_mobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* wannablabMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wannablabMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* wannablab_mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wannablab_mobileTests.m; sourceTree = "<group>"; };
-		074E08AB78A15D850905EBB8 /* Pods-wannablab_mobile-wannablab_mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-wannablab_mobileTests.release.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-wannablab_mobileTests/Pods-wannablab_mobile-wannablab_mobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* wannablab_mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wannablab_mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wannablab_mobile/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wannablab_mobile/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* wannablabMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wannablabMobileTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* wannablabMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wannablabMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wannablabMobile/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = wannablabMobile/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = wannablab_mobile/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = wannablab_mobile/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = wannablab_mobile/main.m; sourceTree = "<group>"; };
-		145AAF96EC340268F7299ED2 /* Pods-wannablab_mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-tvOSTests/Pods-wannablab_mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		278CCEFB686B9CA9EDD3C5E9 /* Pods-wannablab_mobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-tvOSTests/Pods-wannablab_mobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* wannablab_mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wannablab_mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* wannablab_mobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wannablab_mobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40DC02F237E876E229B0D8AE /* Pods-wannablab_mobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-tvOS/Pods-wannablab_mobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		7E06672F07BC6DE930E1584C /* Pods-wannablab_mobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-tvOS/Pods-wannablab_mobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		8141E479F5009F7160F3640E /* libPods-wannablab_mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablab_mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		89FF5CC4275576BBA5CFA958 /* Pods-wannablab_mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile.release.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile/Pods-wannablab_mobile.release.xcconfig"; sourceTree = "<group>"; };
-		918457251AFFBE04F9A28B41 /* libPods-wannablab_mobile-wannablab_mobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablab_mobile-wannablab_mobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3DA12A93738E3C8ED2CCEB2 /* libPods-wannablab_mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablab_mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2C5DEAC905C73C92DA9F2C /* Pods-wannablab_mobile-wannablab_mobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile-wannablab_mobileTests.debug.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile-wannablab_mobileTests/Pods-wannablab_mobile-wannablab_mobileTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C2FDE9FB5D0EA71C362340C1 /* libPods-wannablab_mobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablab_mobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = wannablabMobile/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = wannablabMobile/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = wannablabMobile/main.m; sourceTree = "<group>"; };
+		16A1C4A381DE01B8A2B873CD /* Pods-wannablabMobile-wannablabMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-wannablabMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-wannablabMobileTests/Pods-wannablabMobile-wannablabMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C36A3B67931460138FBA008 /* libPods-wannablabMobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablabMobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2768664E062A286CA0FAF43D /* libPods-wannablabMobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablabMobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* wannablabMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wannablabMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* wannablabMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "wannablabMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31B082A605BFE2FDDD8BA773 /* Pods-wannablabMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-tvOS/Pods-wannablabMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7EBF43AACB7F4885E76760CC /* libPods-wannablabMobile-wannablabMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablabMobile-wannablabMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		815A74CA570E96F3F2F4D241 /* Pods-wannablabMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-tvOS/Pods-wannablabMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		856EFF2DC728CA2C46FE4720 /* Pods-wannablabMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile.release.xcconfig"; path = "Target Support Files/Pods-wannablabMobile/Pods-wannablabMobile.release.xcconfig"; sourceTree = "<group>"; };
+		8969D0EA9F68A62EBB98EB2C /* libPods-wannablabMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wannablabMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93D9041899EBB0E4F30F4876 /* Pods-wannablabMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-tvOSTests/Pods-wannablabMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C56CE5B6566485CC312DDFB8 /* Pods-wannablabMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile.debug.xcconfig"; path = "Target Support Files/Pods-wannablabMobile/Pods-wannablabMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		EDA4DB4B88931193D6ACF8CB /* Pods-wannablab_mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablab_mobile.debug.xcconfig"; path = "Target Support Files/Pods-wannablab_mobile/Pods-wannablab_mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		F42B9C1566DDC7C1ADE48F79 /* Pods-wannablabMobile-wannablabMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wannablabMobile-wannablabMobileTests.release.xcconfig"; path = "Target Support Files/Pods-wannablabMobile-wannablabMobileTests/Pods-wannablabMobile-wannablabMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF4A32C8E9FE9893024AF7E7 /* libPods-wannablab_mobile-wannablab_mobileTests.a in Frameworks */,
+				C4BF78F3805785530D915747 /* libPods-wannablabMobile-wannablabMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD8D78E71B57D86A15076CAD /* libPods-wannablab_mobile.a in Frameworks */,
+				CB4F89896126B980E9D9387D /* libPods-wannablabMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482967FA33E51963D2794150 /* libPods-wannablab_mobile-tvOS.a in Frameworks */,
+				82877F1796C2E02F9440644F /* libPods-wannablabMobile-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8614DB64C425FEA68F8BA0FC /* libPods-wannablab_mobile-tvOSTests.a in Frameworks */,
+				64116EA4D915C3986EB7F50F /* libPods-wannablabMobile-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* wannablab_mobileTests */ = {
+		00E356EF1AD99517003FC87E /* wannablabMobileTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* wannablab_mobileTests.m */,
+				00E356F21AD99517003FC87E /* wannablabMobileTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = wannablab_mobileTests;
+			path = wannablabMobileTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* wannablab_mobile */ = {
+		13B07FAE1A68108700A75B9A /* wannablabMobile */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = wannablab_mobile;
+			name = wannablabMobile;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				A3DA12A93738E3C8ED2CCEB2 /* libPods-wannablab_mobile.a */,
-				8141E479F5009F7160F3640E /* libPods-wannablab_mobile-tvOS.a */,
-				C2FDE9FB5D0EA71C362340C1 /* libPods-wannablab_mobile-tvOSTests.a */,
-				918457251AFFBE04F9A28B41 /* libPods-wannablab_mobile-wannablab_mobileTests.a */,
+				8969D0EA9F68A62EBB98EB2C /* libPods-wannablabMobile.a */,
+				1C36A3B67931460138FBA008 /* libPods-wannablabMobile-tvOS.a */,
+				2768664E062A286CA0FAF43D /* libPods-wannablabMobile-tvOSTests.a */,
+				7EBF43AACB7F4885E76760CC /* libPods-wannablabMobile-wannablabMobileTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,12 +159,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* wannablab_mobile */,
+				13B07FAE1A68108700A75B9A /* wannablabMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* wannablab_mobileTests */,
+				00E356EF1AD99517003FC87E /* wannablabMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				8DE5007424A675B3E26E9695 /* Pods */,
+				AC7F6C9D871A6E5EC0CB1F37 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -174,25 +174,25 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* wannablab_mobile.app */,
-				00E356EE1AD99517003FC87E /* wannablab_mobileTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* wannablab_mobile-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* wannablab_mobile-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* wannablabMobile.app */,
+				00E356EE1AD99517003FC87E /* wannablabMobileTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* wannablabMobile-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* wannablabMobile-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8DE5007424A675B3E26E9695 /* Pods */ = {
+		AC7F6C9D871A6E5EC0CB1F37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EDA4DB4B88931193D6ACF8CB /* Pods-wannablab_mobile.debug.xcconfig */,
-				89FF5CC4275576BBA5CFA958 /* Pods-wannablab_mobile.release.xcconfig */,
-				40DC02F237E876E229B0D8AE /* Pods-wannablab_mobile-tvOS.debug.xcconfig */,
-				7E06672F07BC6DE930E1584C /* Pods-wannablab_mobile-tvOS.release.xcconfig */,
-				278CCEFB686B9CA9EDD3C5E9 /* Pods-wannablab_mobile-tvOSTests.debug.xcconfig */,
-				145AAF96EC340268F7299ED2 /* Pods-wannablab_mobile-tvOSTests.release.xcconfig */,
-				BA2C5DEAC905C73C92DA9F2C /* Pods-wannablab_mobile-wannablab_mobileTests.debug.xcconfig */,
-				074E08AB78A15D850905EBB8 /* Pods-wannablab_mobile-wannablab_mobileTests.release.xcconfig */,
+				C56CE5B6566485CC312DDFB8 /* Pods-wannablabMobile.debug.xcconfig */,
+				856EFF2DC728CA2C46FE4720 /* Pods-wannablabMobile.release.xcconfig */,
+				815A74CA570E96F3F2F4D241 /* Pods-wannablabMobile-tvOS.debug.xcconfig */,
+				31B082A605BFE2FDDD8BA773 /* Pods-wannablabMobile-tvOS.release.xcconfig */,
+				93D9041899EBB0E4F30F4876 /* Pods-wannablabMobile-tvOSTests.debug.xcconfig */,
+				003ED26258F84397D83E20A2 /* Pods-wannablabMobile-tvOSTests.release.xcconfig */,
+				16A1C4A381DE01B8A2B873CD /* Pods-wannablabMobile-wannablabMobileTests.debug.xcconfig */,
+				F42B9C1566DDC7C1ADE48F79 /* Pods-wannablabMobile-wannablabMobileTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -201,11 +201,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* wannablab_mobileTests */ = {
+		00E356ED1AD99517003FC87E /* wannablabMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wannablab_mobileTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wannablabMobileTests" */;
 			buildPhases = (
-				67995668C8976754163EB5F2 /* [CP] Check Pods Manifest.lock */,
+				0508306FEA4B60014C2EB129 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -215,16 +215,16 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = wannablab_mobileTests;
-			productName = wannablab_mobileTests;
-			productReference = 00E356EE1AD99517003FC87E /* wannablab_mobileTests.xctest */;
+			name = wannablabMobileTests;
+			productName = wannablabMobileTests;
+			productReference = 00E356EE1AD99517003FC87E /* wannablabMobileTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* wannablab_mobile */ = {
+		13B07F861A680F5B00A75B9A /* wannablabMobile */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wannablab_mobile" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wannablabMobile" */;
 			buildPhases = (
-				6916330A99BE8D15FC206717 /* [CP] Check Pods Manifest.lock */,
+				91ABBD07E8BA4447432894B9 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -235,16 +235,16 @@
 			);
 			dependencies = (
 			);
-			name = wannablab_mobile;
-			productName = wannablab_mobile;
-			productReference = 13B07F961A680F5B00A75B9A /* wannablab_mobile.app */;
+			name = wannablabMobile;
+			productName = wannablabMobile;
+			productReference = 13B07F961A680F5B00A75B9A /* wannablabMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* wannablab_mobile-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* wannablabMobile-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablab_mobile-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablabMobile-tvOS" */;
 			buildPhases = (
-				03877BCD5D96CB3A884B4846 /* [CP] Check Pods Manifest.lock */,
+				7DC31055EE6F056756641209 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -255,16 +255,16 @@
 			);
 			dependencies = (
 			);
-			name = "wannablab_mobile-tvOS";
-			productName = "wannablab_mobile-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* wannablab_mobile-tvOS.app */;
+			name = "wannablabMobile-tvOS";
+			productName = "wannablabMobile-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* wannablabMobile-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* wannablab_mobile-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* wannablabMobile-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablab_mobile-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablabMobile-tvOSTests" */;
 			buildPhases = (
-				5A1683B2849E3FE88CEB7C9C /* [CP] Check Pods Manifest.lock */,
+				ECD62F651890DF4B008455D9 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -274,9 +274,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "wannablab_mobile-tvOSTests";
-			productName = "wannablab_mobile-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* wannablab_mobile-tvOSTests.xctest */;
+			name = "wannablabMobile-tvOSTests";
+			productName = "wannablabMobile-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* wannablabMobile-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -305,7 +305,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wannablab_mobile" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wannablabMobile" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -318,10 +318,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* wannablab_mobile */,
-				00E356ED1AD99517003FC87E /* wannablab_mobileTests */,
-				2D02E47A1E0B4A5D006451C7 /* wannablab_mobile-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* wannablab_mobile-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* wannablabMobile */,
+				00E356ED1AD99517003FC87E /* wannablabMobileTests */,
+				2D02E47A1E0B4A5D006451C7 /* wannablabMobile-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* wannablabMobile-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -375,7 +375,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		03877BCD5D96CB3A884B4846 /* [CP] Check Pods Manifest.lock */ = {
+		0508306FEA4B60014C2EB129 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -390,7 +390,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wannablab_mobile-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wannablabMobile-wannablabMobileTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -411,7 +411,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		5A1683B2849E3FE88CEB7C9C /* [CP] Check Pods Manifest.lock */ = {
+		7DC31055EE6F056756641209 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -426,14 +426,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wannablab_mobile-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wannablabMobile-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67995668C8976754163EB5F2 /* [CP] Check Pods Manifest.lock */ = {
+		91ABBD07E8BA4447432894B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -448,14 +448,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wannablab_mobile-wannablab_mobileTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wannablabMobile-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6916330A99BE8D15FC206717 /* [CP] Check Pods Manifest.lock */ = {
+		ECD62F651890DF4B008455D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,7 +470,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wannablab_mobile-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wannablabMobile-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -522,7 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* wannablab_mobileTests.m in Sources */,
+				00E356F31AD99517003FC87E /* wannablabMobileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* wannablab_mobileTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* wannablabMobileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,12 +557,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* wannablab_mobile */;
+			target = 13B07F861A680F5B00A75B9A /* wannablabMobile */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* wannablab_mobile-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* wannablabMobile-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -574,7 +574,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = wannablab_mobile;
+			path = wannablabMobile;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -582,14 +582,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA2C5DEAC905C73C92DA9F2C /* Pods-wannablab_mobile-wannablab_mobileTests.debug.xcconfig */;
+			baseConfigurationReference = 16A1C4A381DE01B8A2B873CD /* Pods-wannablabMobile-wannablabMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = wannablab_mobileTests/Info.plist;
+				INFOPLIST_FILE = wannablabMobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -599,17 +599,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablab_mobile.app/wannablab_mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablabMobile.app/wannablabMobile";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 074E08AB78A15D850905EBB8 /* Pods-wannablab_mobile-wannablab_mobileTests.release.xcconfig */;
+			baseConfigurationReference = F42B9C1566DDC7C1ADE48F79 /* Pods-wannablabMobile-wannablabMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = wannablab_mobileTests/Info.plist;
+				INFOPLIST_FILE = wannablabMobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -619,13 +619,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablab_mobile.app/wannablab_mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablabMobile.app/wannablabMobile";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDA4DB4B88931193D6ACF8CB /* Pods-wannablab_mobile.debug.xcconfig */;
+			baseConfigurationReference = C56CE5B6566485CC312DDFB8 /* Pods-wannablabMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -635,7 +635,7 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = wannablab_mobile/Info.plist;
+				INFOPLIST_FILE = wannablabMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -643,7 +643,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = wannablab_mobile;
+				PRODUCT_NAME = wannablabMobile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -652,12 +652,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89FF5CC4275576BBA5CFA958 /* Pods-wannablab_mobile.release.xcconfig */;
+			baseConfigurationReference = 856EFF2DC728CA2C46FE4720 /* Pods-wannablabMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = wannablab_mobile/Info.plist;
+				INFOPLIST_FILE = wannablabMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -665,7 +665,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = wannablab_mobile;
+				PRODUCT_NAME = wannablabMobile;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -673,7 +673,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40DC02F237E876E229B0D8AE /* Pods-wannablab_mobile-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 815A74CA570E96F3F2F4D241 /* Pods-wannablabMobile-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -684,14 +684,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "wannablab_mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "wannablabMobile-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablab_mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablabMobile-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -701,7 +701,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E06672F07BC6DE930E1584C /* Pods-wannablab_mobile-tvOS.release.xcconfig */;
+			baseConfigurationReference = 31B082A605BFE2FDDD8BA773 /* Pods-wannablabMobile-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -712,14 +712,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "wannablab_mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "wannablabMobile-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablab_mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablabMobile-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -729,7 +729,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 278CCEFB686B9CA9EDD3C5E9 /* Pods-wannablab_mobile-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 93D9041899EBB0E4F30F4876 /* Pods-wannablabMobile-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -739,24 +739,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "wannablab_mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "wannablabMobile-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablab_mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablabMobile-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablab_mobile-tvOS.app/wannablab_mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablabMobile-tvOS.app/wannablabMobile-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 145AAF96EC340268F7299ED2 /* Pods-wannablab_mobile-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 003ED26258F84397D83E20A2 /* Pods-wannablabMobile-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -766,17 +766,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "wannablab_mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "wannablabMobile-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablab_mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.wannablabMobile-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablab_mobile-tvOS.app/wannablab_mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wannablabMobile-tvOS.app/wannablabMobile-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -897,7 +897,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wannablab_mobileTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "wannablabMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -906,7 +906,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wannablab_mobile" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "wannablabMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -915,7 +915,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablab_mobile-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablabMobile-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -924,7 +924,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablab_mobile-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "wannablabMobile-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -933,7 +933,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wannablab_mobile" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "wannablabMobile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface wannablab_mobileTests : XCTestCase
+@interface wannablabMobileTests : XCTestCase
 
 @end
 
-@implementation wannablab_mobileTests
+@implementation wannablabMobileTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

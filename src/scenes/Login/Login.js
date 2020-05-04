@@ -51,13 +51,14 @@ const Login = props => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Enter your name</Text>
+      <Text style={styles.title}>Login</Text>
       <Input
         placeholder="Enter your name..."
         value={name}
         onChangeText={setName}
       />
       <Input
+        placeholder="Enter your password..."
         value={password}
         onChangeText={setPassword}
       />

@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.wannablab_mobile"
+        applicationId "com.wannablabmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -36,9 +36,9 @@ const Home = props => {
   });
 
   const initListeners = () => {
-    ConnectyCube.videochat.onCallListener = onCallListener;
-    ConnectyCube.videochat.onAcceptCallListener = onAcceptCallListener;
-    ConnectyCube.videochat.onRejectCallListener = onRejectCallListener;
+    // ConnectyCube.videochat.onCallListener = onCallListener;
+    // ConnectyCube.videochat.onAcceptCallListener = onAcceptCallListener;
+    // ConnectyCube.videochat.onRejectCallListener = onRejectCallListener;
   }
 
   const onCallListener = session => {
@@ -54,7 +54,7 @@ const Home = props => {
         setIsIncomingCall(false);
         console.error(e);
       })
-  }
+  };
 
   const renderRTCView = (id, stream) => (
     <RTCView

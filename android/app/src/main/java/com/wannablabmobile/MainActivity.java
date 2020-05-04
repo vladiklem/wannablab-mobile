@@ -1,4 +1,4 @@
-package com.wannablab_mobile;
+package com.wannablabmobile;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "wannablab_mobile";
+    return "wannablabMobile";
   }
 }
