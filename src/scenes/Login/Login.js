@@ -17,8 +17,19 @@ const Login = props => {
 
   const openHome = ({ user }) => navigation.navigate(HOME, { user });
 
+  const showErrorAlert = (e, onConfirm = () => {}) => {
+    const { errors } = e.info;
+    const errorMessage = errors.login[0] || errors[0];
+    Alert.alert(
+      e.code.toFixed(0),
+      errorMessage,
+      [
+        { text: 'ok', onConfirm }
+      ]
+    );
+  };
+
   const login = () => {
-    const now = Date.now();
     const user = {
       login: name,
       password
@@ -26,7 +37,7 @@ const Login = props => {
     AuthService
       .login(user)
       .then(openHome)
-      .catch(e => console.error(e));
+      .catch(showErrorAlert);
   };
 
   const signup = async () => {
@@ -46,7 +57,7 @@ const Login = props => {
     AuthService
       .signup(user)
       .then(openHome)
-      .catch(e => console.error(e));
+      .catch(showErrorAlert);
   };
 
   return (
@@ -61,6 +72,7 @@ const Login = props => {
         placeholder="Enter your password..."
         value={password}
         onChangeText={setPassword}
+        rootStyle={styles.input}
       />
       <Button
         label="Login"

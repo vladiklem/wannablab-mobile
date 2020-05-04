@@ -1,22 +1,35 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import ConnectyCube from 'react-native-connectycube';
+import ConnectyCube, { CubeSessionManager } from 'react-native-connectycube';
 
 import config from '../config';
 
 export default class AuthService {
   init = async () => {
+    const token = await AsyncStorage.getItem('token');
+    const isValid = false;
     ConnectyCube.init(...config.appCredentials);
-    const session = await this.createAppSession();
-    AsyncStorage.setItem('token', session.token);
+
+    if (!isValid) {
+      const session = await this.createAppSession();
+      AsyncStorage.setItem('token', session.token);
+
+      return session.token;
+    }
+
+    return token;
   }
 
-  createAppSession = () => {
-    return new Promise((resolve, reject) => {
-      ConnectyCube.createSession()
-        .then(resolve)
-        .catch(reject);
-    })
+  isSessionValid = async () => {
+    const isValid = await CubeSessionManager.instance.isActiveSessionValid();
+
+    return isValid;
   }
+
+  createAppSession = () => new Promise((resolve, reject) => {
+    ConnectyCube.createSession()
+      .then(resolve)
+      .catch(reject);
+  });
 
   signup = userProfile => new Promise((resolve, reject) => {
     ConnectyCube.users.signup(userProfile)

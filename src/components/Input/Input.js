@@ -9,7 +9,8 @@ const Input = props => {
     value,
     onChangeText,
     placeholder = '',
-    KeyboardType = 'default'
+    KeyboardType = 'default',
+    rootStyle = {}
   } = props;
 
   const handleChangeText = useCallback(text => {
@@ -17,7 +18,7 @@ const Input = props => {
   }, [onChangeText]);
 
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, rootStyle]}>
       <TextInput
         style={styles.input}
         value={value}

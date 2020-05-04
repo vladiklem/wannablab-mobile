@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 10,
     fontSize: 24
+  },
+  input: {
+    marginTop: 20
   }
 });
 

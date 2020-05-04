@@ -25,8 +25,7 @@ module.exports = {
     'jest'
   ],
   rules: {
-    'eslint no-underscore-dangle': ["error", { "allow": ["_session"] }],
-    'no-console': ["log", { allow: ["warn"] }],
+    'no-underscore-dangle': ["error", { "allow": ["_session"] }],
     'no-unused-vars': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'comma-dangle': ['error', 'never'],

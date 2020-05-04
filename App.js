@@ -6,17 +6,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Root from './src/router/Root';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Root />
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </>
-  );
-};
+const App = () => (
+  <>
+    <StatusBar barStyle="dark-content" />
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Root />
+      </NavigationContainer>
+    </SafeAreaProvider>
+  </>
+);
 
 export default App;

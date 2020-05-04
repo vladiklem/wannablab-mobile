@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   createStackNavigator
 } from '@react-navigation/stack';
@@ -10,12 +10,21 @@ import { AuthService } from '../services';
 const Stack = createStackNavigator();
 
 const Root = () => {
+  const [token, setToken] = useState(null);
+
   useEffect(() => {
-    AuthService.init();
+    const retrieveToken = async () => {
+      const token = await AuthService.init();
+      console.log(token);
+      setToken(token);
+    };
+    retrieveToken();
   });
 
+  const initialRouteName = token ? HOME : LOGIN;
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={initialRouteName}>
       <Stack.Screen
         name={LOGIN}
         component={Login}
