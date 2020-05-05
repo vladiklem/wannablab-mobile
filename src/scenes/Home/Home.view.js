@@ -6,7 +6,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import styles from './Home.styles';
 
-const Home = props => {
+const HomeView = props => {
   const {
     id,
     login,
@@ -51,3 +51,5 @@ const Home = props => {
     </SafeAreaView>
   );
 };
+
+export default HomeView;
