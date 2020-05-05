@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux';
 
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import { routeName as HOME } from '../Home/Home';
+import LoginView from './Login.view';
+import { routeName as HOME } from '../Home/Home.container';
 import { AuthService } from '../../services';
-import styles from './Login.style';
 
 export const routeName = 'LOGIN';
 
@@ -29,7 +28,7 @@ const Login = props => {
     );
   };
 
-  const login = () => {
+  const onLogin = useCallback(() => {
     const user = {
       login: name,
       password
@@ -38,52 +37,44 @@ const Login = props => {
       .login(user)
       .then(openHome)
       .catch(showErrorAlert);
-  };
+  }, [password, name, openHome, showErrorAlert]);
 
-  const signup = async () => {
+  const onSignup = useCallback(async () => {
     if (password.length < 8) {
       Alert.alert('password min length is 8 characters');
 
       return;
     }
-    const token = await AsyncStorage.getItem('token');
+
     const user = {
       login: name,
       password,
       keys: {
-        token
+        token: props.appToken
       }
     };
     AuthService
       .signup(user)
       .then(openHome)
       .catch(showErrorAlert);
-  };
+  }, [name, password, openHome, showErrorAlert, props.appToken]);
+
+  console.log(props.appToken);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <Input
-        placeholder="Enter your name..."
-        value={name}
-        onChangeText={setName}
-      />
-      <Input
-        placeholder="Enter your password..."
-        value={password}
-        onChangeText={setPassword}
-        rootStyle={styles.input}
-      />
-      <Button
-        label="Login"
-        onPress={login}
-      />
-      <Button
-        label="Sign up"
-        onPress={signup}
-      />
-    </View>
+    <LoginView
+      name={name}
+      setName={setName}
+      password={password}
+      setPassword={setPassword}
+      onLogin={onLogin}
+      onSignup={onSignup}
+    />
   );
 };
 
-export default Login;
+const mapStateToProps = ({ user }) => ({
+  appToken: user.appToken
+});
+
+export default connect(mapStateToProps)(Login);

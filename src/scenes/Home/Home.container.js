@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import ConnectyCube, { RTCView } from 'react-native-connectycube';
+import { connect } from 'react-redux';
+import ConnectyCube from 'react-native-connectycube';
 
+import HomeView from './Home.view';
 import { AuthService, CallService } from '../../services';
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import styles from './Home.styles';
 
 export const routeName = 'HOME';
 const initialProfile = {
@@ -167,50 +164,24 @@ const Home = props => {
     return () => {
       AuthService.logout();
     };
-  });
-
-  const renderRTCView = (id, streams) => (
-    <RTCView
-      objectFir="cover"
-      style={{ flex: 1 }}
-      key={id}
-      streamURL={streams[0].stream.toUrl()}
-    />
-  );
+  }, []);
 
   return (
-    <SafeAreaView style={styles.f1}>
-      <View>
-        <Text>{`Your profile id: ${userProfile.id}`}</Text>
-        <Text>{`Your profile login: ${userProfile.login}`}</Text>
-        <Text>Enter id of user that you want to call</Text>
-        <Input
-          value={targetUserId}
-          onChangeText={setTargetUserId}
-        />
-        <Button label="Start Call" onPress={() => {}} />
-        {isIncomingCall && (
-          <>
-            <Button
-              label="Accept Incoming Call"
-              onPress={onPressAccept}
-            />
-            <Button
-              label="Reject Incoming Call"
-              onPress={onPressReject}
-            />
-          </>
-        )}
-        {isActiveCall && renderRTCView()}
-        {isActiveCall && (
-          <Button
-            label="End call"
-            onPress={() => {}}
-          />
-        )}
-      </View>
-    </SafeAreaView>
+    <HomeView
+      id={userProfile.id}
+      login={userProfile.login}
+      targetUserId={targetUserId}
+      setTargetUserId={setTargetUserId}
+      isIncomingCall={isIncomingCall}
+      onPressAccept={onPressAccept}
+      onPressReject={onPressReject}
+      isActiveCall={isActiveCall}
+    />
   );
 };
 
-export default Home;
+const mapStateToProps = ({ user }) => ({
+  user
+});
+
+export default connect(mapStateToProps)(Home);

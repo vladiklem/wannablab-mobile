@@ -11,7 +11,7 @@ const Button = props => {
 
   return (
     <TouchableOpacity
-      style={styles.root}
+      style={styles.container}
       onPress={onPress}
     >
       <Text style={styles.label}>

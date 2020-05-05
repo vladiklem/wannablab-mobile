@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../theme/colors';
+
 export default StyleSheet.create({
-  root: {
+  container: {
     height: 45,
     width: '100%',
-    borderColor: 'black',
-    borderWidth: 1,
+    borderColor: colors.$white,
+    borderWidth: 2,
     borderRadius: 20,
     paddingLeft: 10,
     fontSize: 25,
@@ -13,6 +15,6 @@ export default StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    color: 'black'
+    color: colors.$white
   }
 });
