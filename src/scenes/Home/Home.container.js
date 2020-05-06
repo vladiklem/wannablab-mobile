@@ -1,20 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ConnectyCube from 'react-native-connectycube';
 
 import HomeView from './Home.view';
 import { AuthService, CallService } from '../../services';
 
 export const routeName = 'HOME';
-const initialProfile = {
-  id: -1,
-  name: 'unknown',
-  login: 'unknown'
-};
 
-const Home = props => {
-  const { route } = props;
-  const [userProfile, setUserProfile] = useState(initialProfile);
+
+const Home = () => {
+  const { profile } = useSelector(state => state.user);
   const [targetUserId, setTargetUserId] = useState('');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
@@ -154,10 +149,7 @@ const Home = props => {
   });
 
   useEffect(() => {
-    const { user } = route.params;
-
-    if (user) {
-      setUserProfile(user);
+    if (profile.userToken) {
       initListeners();
     }
 
@@ -168,8 +160,8 @@ const Home = props => {
 
   return (
     <HomeView
-      id={userProfile.id}
-      login={userProfile.login}
+      id={profile.id}
+      login={profile.login}
       targetUserId={targetUserId}
       setTargetUserId={setTargetUserId}
       isIncomingCall={isIncomingCall}
@@ -180,8 +172,5 @@ const Home = props => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  user
-});
 
-export default connect(mapStateToProps)(Home);
+export default Home;

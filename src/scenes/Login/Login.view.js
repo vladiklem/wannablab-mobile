@@ -7,8 +7,8 @@ import styles from './Login.style';
 
 const LoginView = props => {
   const {
-    name,
-    setName,
+    username,
+    setUsername,
     password,
     setPassword,
     onLogin,
@@ -19,9 +19,9 @@ const LoginView = props => {
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <Input
-        placeholder="Enter your name..."
-        value={name}
-        onChangeText={setName}
+        placeholder="Enter your username..."
+        value={username}
+        onChangeText={setUsername}
       />
       <Input
         placeholder="Enter your password..."

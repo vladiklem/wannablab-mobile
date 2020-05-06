@@ -1,3 +1,5 @@
+// check credentials safety
+
 export const CREDENTIALS = {
   appId: 2373,
   authKey: 'ZHNJKteW9Bs544F',

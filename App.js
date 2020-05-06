@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import store from './src/store';
+import { store } from './src/store';
 
 import Root from './src/router/Root';
 

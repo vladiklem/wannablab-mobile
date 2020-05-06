@@ -1,20 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
 import { AuthService } from '../../services';
+import { isSuccess } from '../../utils/requests';
+import { login } from '../../store/user/actions';
 
 export const routeName = 'LOGIN';
 
 const Login = props => {
+  const dispatch = useDispatch();
+  const { appToken, loginRequest } = useSelector(state => state.user);
   const { navigation } = props;
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const openHome = ({ user }) => navigation.navigate(HOME, { user });
+  const openHome = useCallback(() => navigation.navigate(HOME), [navigation]);
 
   const showErrorAlert = (e, onConfirm = () => {}) => {
     const { errors } = e.info;
@@ -29,15 +32,8 @@ const Login = props => {
   };
 
   const onLogin = useCallback(() => {
-    const user = {
-      login: name,
-      password
-    };
-    AuthService
-      .login(user)
-      .then(openHome)
-      .catch(showErrorAlert);
-  }, [password, name, openHome, showErrorAlert]);
+    dispatch(login(username, password));
+  }, [password, username]);
 
   const onSignup = useCallback(async () => {
     if (password.length < 8) {
@@ -46,25 +42,31 @@ const Login = props => {
       return;
     }
 
-    const user = {
-      login: name,
+    const credentials = {
+      login: username,
       password,
       keys: {
-        token: props.appToken
+        token: appToken
       }
     };
     AuthService
-      .signup(user)
+      .signup(credentials)
       .then(openHome)
       .catch(showErrorAlert);
-  }, [name, password, openHome, showErrorAlert, props.appToken]);
+  }, [username, password, openHome, showErrorAlert, appToken]);
 
-  console.log(props.appToken);
+  useEffect(() => {
+    const { status } = loginRequest;
+
+    if (isSuccess(status)) {
+      openHome();
+    }
+  }, [loginRequest]);
 
   return (
     <LoginView
-      name={name}
-      setName={setName}
+      username={username}
+      setUsername={setUsername}
       password={password}
       setPassword={setPassword}
       onLogin={onLogin}
@@ -73,8 +75,4 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  appToken: user.appToken
-});
-
-export default connect(mapStateToProps)(Login);
+export default Login;
