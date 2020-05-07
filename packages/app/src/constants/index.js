@@ -10,8 +10,10 @@ export const initialRequest = {
   error: ''
 };
 
-export const APP_TOKEN = 'APP_TOKEN';
-
-export const PROFILE = 'PROFILE';
+export const userKeys = {
+  APP_TOKEN: 'APP_TOKEN',
+  UPDATED_AT: 'UPDATED_AT',
+  PROFILE: 'PROFILE'
+};
 
 export const UNKNOWN = 'unknown';

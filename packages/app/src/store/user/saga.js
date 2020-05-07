@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { StorageService, AuthService } from '../../services';
 
 import { INIT_USER, LOGIN } from './constants';
-import { APP_TOKEN, PROFILE, UNKNOWN } from '../../constants';
+import { userKeys, UNKNOWN } from '../../constants';
 import {
   initSuccess,
   loginSuccess,
@@ -11,23 +11,33 @@ import {
 } from './actions';
 import { initialProfile } from './reducer';
 
+const isValid = date => (Date.now() - Date.parse(date)) / 60000 < 120;
+
 function* initUser() {
   try {
     yield AuthService.init();
-    const appToken = yield call(StorageService.getItem, APP_TOKEN);
+    const profile = yield call(StorageService.getJSON, userKeys.PROFILE);
 
-    if (!appToken) {
-      const { token } = yield AuthService.createAppSession();
-      yield call(StorageService.setItem, APP_TOKEN, token);
-      yield put(initSuccess(token, initialProfile));
-    } else {
-      const profile = yield call(StorageService.getJSON, PROFILE);
+    if (!profile) {
+      const appToken = yield call(StorageService.getItem, userKeys.APP_TOKEN);
+      const updatedAt = yield call(
+        StorageService.getItem,
+        userKeys.UPDATED_AT
+      );
 
-      if (!profile) {
-        yield put(initSuccess(appToken, initialProfile));
+      if (!appToken || !updatedAt || !isValid(updatedAt)) {
+        const {
+          token,
+          updated_at: updatedAt
+        } = yield AuthService.createAppSession();
+        yield call(StorageService.setItem, userKeys.UPDATED_AT, updatedAt);
+        yield call(StorageService.setItem, userKeys.APP_TOKEN, token);
+        yield put(initSuccess(token, initialProfile));
       } else {
-        yield put(initSuccess(appToken, profile));
+        yield put(initSuccess(appToken, initialProfile));
       }
+    } else {
+      yield put(initSuccess(null, profile));
     }
   } catch (e) {
     console.error(e);
@@ -38,19 +48,19 @@ function* loginUser({ payload }) {
   yield put(loginLoading());
   try {
     const credentials = { ...payload };
-    const { id, token, user } = yield AuthService
+    const { token, user } = yield AuthService
       .login(credentials)
       .catch(e => {
         console.error(e);
       });
     const profile = {
-      id,
+      id: user.id,
       userToken: token,
       login: user.login,
       fullName: user.fullName || UNKNOWN
     };
 
-    yield call(StorageService.setJSON, PROFILE, profile);
+    yield call(StorageService.setJSON, userKeys.PROFILE, profile);
     yield put(loginSuccess(profile));
   } catch (e) {
     yield put(loginFailure(e.message));

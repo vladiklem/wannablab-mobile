@@ -18,10 +18,6 @@ const Root = () => {
     dispatch(init());
   }, []);
 
-  useEffect(() => {
-    console.log(userToken, 'lll');
-  }, [userToken]);
-
   return (
     <Stack.Navigator>
       {!userToken ? (
