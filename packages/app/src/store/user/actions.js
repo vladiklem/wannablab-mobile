@@ -11,10 +11,11 @@ export const init = () => ({
   type: INIT_USER
 });
 
-export const initSuccess = appToken => ({
+export const initSuccess = (appToken, profile) => ({
   type: INIT_USER_SUCCESS,
   payload: {
-    appToken
+    appToken,
+    profile
   }
 });
 
