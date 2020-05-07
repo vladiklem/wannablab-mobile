@@ -1,26 +1,33 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import AsyncStorage from '@react-native-community/async-storage';
+import { StorageService, AuthService } from '../../services';
 
-import { AuthService } from '../../services';
 import { INIT_USER, LOGIN } from './constants';
+import { APP_TOKEN, PROFILE, UNKNOWN } from '../../constants';
 import {
   initSuccess,
   loginSuccess,
   loginLoading,
   loginFailure
 } from './actions';
+import { initialProfile } from './reducer';
 
 function* initUser() {
   try {
     yield AuthService.init();
-    const appToken = yield call(AsyncStorage.getItem, 'appToken');
+    const appToken = yield call(StorageService.getItem, APP_TOKEN);
 
     if (!appToken) {
       const { token } = yield AuthService.createAppSession();
-      yield call(AsyncStorage.setItem, 'appToken', token);
-      yield put(initSuccess(token));
+      yield call(StorageService.setItem, APP_TOKEN, token);
+      yield put(initSuccess(token, initialProfile));
     } else {
-      yield put(initSuccess(appToken));
+      const profile = yield call(StorageService.getJSON, PROFILE);
+
+      if (!profile) {
+        yield put(initSuccess(appToken, initialProfile));
+      } else {
+        yield put(initSuccess(appToken, profile));
+      }
     }
   } catch (e) {
     console.error(e);
@@ -34,14 +41,16 @@ function* loginUser({ payload }) {
     const { id, token, user } = yield AuthService
       .login(credentials)
       .catch(e => {
-        console.log(e);
+        console.error(e);
       });
     const profile = {
       id,
       userToken: token,
-      login: user.login
+      login: user.login,
+      fullName: user.fullName || UNKNOWN
     };
 
+    yield call(StorageService.setJSON, PROFILE, profile);
     yield put(loginSuccess(profile));
   } catch (e) {
     yield put(loginFailure(e.message));

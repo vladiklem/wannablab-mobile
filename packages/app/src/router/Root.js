@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {
   createStackNavigator
 } from '@react-navigation/stack';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Login, { routeName as LOGIN } from '../scenes/Login/Login.container';
 import Home, { routeName as HOME } from '../scenes/Home/Home.container';
@@ -12,24 +12,31 @@ const Stack = createStackNavigator();
 
 const Root = () => {
   const dispatch = useDispatch();
+  const { userToken } = useSelector(store => store.user.profile);
 
   useEffect(() => {
     dispatch(init());
   }, []);
 
+  useEffect(() => {
+    console.log(userToken, 'lll');
+  }, [userToken]);
 
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name={LOGIN}
-        component={Login}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={HOME}
-        component={Home}
-        options={{ headerShown: false }}
-      />
+      {!userToken ? (
+        <Stack.Screen
+          name={LOGIN}
+          component={Login}
+          options={{ headerShown: false }}
+        />
+      ) : (
+        <Stack.Screen
+          name={HOME}
+          component={Home}
+          options={{ headerShown: false }}
+        />
+      )}
     </Stack.Navigator>
   );
 };
