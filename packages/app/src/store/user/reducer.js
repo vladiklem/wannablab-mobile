@@ -2,7 +2,7 @@ import {
   INIT_USER_SUCCESS,
   LOGIN_SUCCESS,
   LOGIN_LOADING,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
 } from './constants';
 import { requestStatus } from '../../constants';
 import { createReducer } from '../../utils/store';
@@ -15,44 +15,44 @@ const initialState = {
     firstName: '',
     lastName: '',
     appToken: null,
-    userToken: null
+    userToken: null,
   },
   loginRequest: {
     status: requestStatus.IDLE,
-    error: ''
-  }
+    error: '',
+  },
 };
 
 const handlers = {
   [INIT_USER_SUCCESS]: (state, action) => ({
     ...state,
-    appToken: action.payload.appToken
+    appToken: action.payload.appToken,
   }),
   [LOGIN_LOADING]: state => ({
     ...state,
     loginRequest: {
       status: requestStatus.LOADING,
-      error: ''
-    }
+      error: '',
+    },
   }),
   [LOGIN_SUCCESS]: (state, action) => ({
     ...state,
     profile: {
       ...state.profile,
-      ...action.payload.profile
+      ...action.payload.profile,
     },
     loginRequest: {
       status: requestStatus.SUCCESS,
-      error: ''
-    }
+      error: '',
+    },
   }),
   [LOGIN_FAILURE]: (state, payload) => ({
     ...state,
     loginRequest: {
       status: requestStatus.FAILURE,
-      error: payload.error
-    }
-  })
+      error: payload.error,
+    },
+  }),
 };
 
 export default createReducer(initialState, handlers);

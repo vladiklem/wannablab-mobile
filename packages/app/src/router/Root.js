@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import {
-  createStackNavigator
-} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 
 import Login, { routeName as LOGIN } from '../scenes/Login/Login.container';
+import Interests, {
+  routeName as INTERESTS,
+} from '../scenes/Interests/Interests.container';
 import Home, { routeName as HOME } from '../scenes/Home/Home.container';
 import { init } from '../store/user/actions';
 
@@ -17,9 +18,13 @@ const Root = () => {
     dispatch(init());
   }, []);
 
-
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name={INTERESTS}
+        component={Interests}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name={LOGIN}
         component={Login}

@@ -7,7 +7,7 @@ import {
   initSuccess,
   loginSuccess,
   loginLoading,
-  loginFailure
+  loginFailure,
 } from './actions';
 
 function* initUser() {
@@ -31,15 +31,15 @@ function* loginUser({ payload }) {
   yield put(loginLoading());
   try {
     const credentials = { ...payload };
-    const { id, token, user } = yield AuthService
-      .login(credentials)
-      .catch(e => {
+    const { id, token, user } = yield AuthService.login(credentials).catch(
+      e => {
         console.log(e);
-      });
+      },
+    );
     const profile = {
       id,
       userToken: token,
-      login: user.login
+      login: user.login,
     };
 
     yield put(loginSuccess(profile));
@@ -48,7 +48,4 @@ function* loginUser({ payload }) {
   }
 }
 
-export default [
-  takeLatest(INIT_USER, initUser),
-  takeLatest(LOGIN, loginUser)
-];
+export default [takeLatest(INIT_USER, initUser), takeLatest(LOGIN, loginUser)];
