@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView, Text, Switch, FlatList } from 'react-native';
+import Button from '../../components/Button/Button';
 import styles from './Interests.style';
 
 const Item = ({ id, name, selected, onSelect }) => {
@@ -19,22 +20,27 @@ const Item = ({ id, name, selected, onSelect }) => {
   );
 };
 
-const InterestsView = ({ userInterests, onSelect }) => {
+const InterestsView = ({ userInterests, onSelect, onSave }) => {
+  const onPress = () => {
+    onSave(userInterests);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Interests View</Text>
+      <Text style={styles.title}>Select your interests</Text>
       <FlatList
         data={userInterests}
         renderItem={({ item }) => (
           <Item
             id={item.id}
             name={item.name}
-            selected={item.default}
+            selected={item.active}
             onSelect={onSelect}
           />
         )}
         keyExtractor={item => item.id}
       />
+      <Button label="Save" onPress={onPress} />
     </SafeAreaView>
   );
 };

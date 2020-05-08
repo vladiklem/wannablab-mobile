@@ -21,13 +21,13 @@ const Root = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={INTERESTS}
-        component={Interests}
+        name={LOGIN}
+        component={Login}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name={LOGIN}
-        component={Login}
+        name={INTERESTS}
+        component={Interests}
         options={{ headerShown: false }}
       />
       <Stack.Screen

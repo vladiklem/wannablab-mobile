@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 40,
     backgroundColor: colors.$lightPurple,
+    paddingBottom: 10,
   },
   title: {
     textAlign: 'center',
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 8,
   },
   itemName: {
     fontSize: 20,

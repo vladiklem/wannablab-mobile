@@ -19,17 +19,31 @@ const Interests = props => {
     setUserInterests(interests);
   }, [interests]);
 
+  const onSave = userInterests => {
+    const userInterestsActiveNames = userInterests
+      .filter(interest => interest.active)
+      .map(interest => interest.name);
+
+    console.log(userInterestsActiveNames);
+  };
+
   const onSelect = (id, selected) => {
     const updatedInterests = userInterests.map(interest => {
       if (interest.id === id) {
-        interest.default = !selected;
+        interest.active = !selected;
       }
       return interest;
     });
     setUserInterests(updatedInterests);
   };
 
-  return <InterestsView userInterests={userInterests} onSelect={onSelect} />;
+  return (
+    <InterestsView
+      userInterests={userInterests}
+      onSelect={onSelect}
+      onSave={onSave}
+    />
+  );
 };
 
 export default Interests;
