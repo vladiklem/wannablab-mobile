@@ -65,13 +65,18 @@ function* loginUser({ payload }) {
 
 function* updateUser({ payload }) {
   try {
-    const updatedUser = yield AuthService.update(payload.updatedProfile).catch(
+    const { user } = yield AuthService.update(payload.updatedProfile).catch(
       e => {
         console.error(e);
       },
     );
 
-    yield put(updateUserSuccess(updatedUser));
+    const updatedProfile = {
+      fullName: user.full_name || UNKNOWN,
+      interests: user.user_tags.split(','),
+    };
+
+    yield put(updateUserSuccess(updatedProfile));
   } catch (e) {
     console.error(e);
   }

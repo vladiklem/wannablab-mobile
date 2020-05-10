@@ -8,17 +8,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,
-    backgroundColor: colors.$lightPurple
+    backgroundColor: colors.$lightPurple,
   },
   title: {
     marginBottom: 10,
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.$white
+    color: colors.$white,
   },
   input: {
-    marginTop: 20
-  }
+    marginTop: 20,
+  },
 });
 
 export default styles;

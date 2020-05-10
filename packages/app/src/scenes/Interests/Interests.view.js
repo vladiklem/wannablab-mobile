@@ -21,10 +21,6 @@ const Item = ({ id, name, selected, onSelect }) => {
 };
 
 const InterestsView = ({ userInterests, onSelect, onSave }) => {
-  const onPress = () => {
-    onSave(userInterests);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Select your interests</Text>
@@ -40,7 +36,7 @@ const InterestsView = ({ userInterests, onSelect, onSave }) => {
         )}
         keyExtractor={item => item.id}
       />
-      <Button label="Save" onPress={onPress} />
+      <Button label="Save" onPress={onSave} />
     </SafeAreaView>
   );
 };

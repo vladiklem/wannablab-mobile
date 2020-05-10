@@ -13,6 +13,7 @@ export const initialProfile = {
   login: '',
   fullName: '',
   userToken: null,
+  interests: [],
 };
 
 const initialState = {
