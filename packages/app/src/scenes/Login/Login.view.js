@@ -12,7 +12,7 @@ const LoginView = props => {
     password,
     setPassword,
     onLogin,
-    onSignup
+    onSignup,
   } = props;
 
   return (
@@ -29,14 +29,8 @@ const LoginView = props => {
         onChangeText={setPassword}
         containerStyle={styles.input}
       />
-      <Button
-        label="Login"
-        onPress={onLogin}
-      />
-      <Button
-        label="Sign up"
-        onPress={onSignup}
-      />
+      <Button label="Login" onPress={onLogin} />
+      <Button label="Sign up" onPress={onSignup} />
     </View>
   );
 };

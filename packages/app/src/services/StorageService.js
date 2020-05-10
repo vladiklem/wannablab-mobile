@@ -5,11 +5,11 @@ class StorageService {
     const item = await AsyncStorage.getItem(key);
 
     return item;
-  }
+  };
 
   setItem = async (key, item) => {
     await AsyncStorage.setItem(key, item);
-  }
+  };
 
   getJSON = async key => {
     const item = await this.getItem(key);
@@ -21,7 +21,7 @@ class StorageService {
     const item = JSON.stringify(obj);
 
     await this.setItem(key, item);
-  }
+  };
 }
 
 export default StorageService;

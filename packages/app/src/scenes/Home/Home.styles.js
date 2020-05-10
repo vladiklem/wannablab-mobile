@@ -5,8 +5,8 @@ import colors from '../../theme/colors';
 const styles = StyleSheet.create({
   f1: {
     flex: 1,
-    backgroundColor: colors.$lightPurple
-  }
+    backgroundColor: colors.$lightPurple,
+  },
 });
 
 export default styles;
