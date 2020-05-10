@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Login, { routeName as LOGIN } from '../scenes/Login/Login.container';
 import Interests, {
@@ -13,6 +13,7 @@ const Stack = createStackNavigator();
 
 const Root = () => {
   const dispatch = useDispatch();
+  const { userToken } = useSelector(store => store.user.profile);
 
   useEffect(() => {
     dispatch(init());

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { get } from '../../store/interests/actions';
+import { updateUser } from '../../store/user/actions';
 
 import InterestsView from './Interests.view';
 
@@ -24,7 +25,11 @@ const Interests = props => {
       .filter(interest => interest.active)
       .map(interest => interest.name);
 
-    console.log(userInterestsActiveNames);
+    const updatedUserProfile = {
+      tag_list: userInterestsActiveNames.toString(),
+    };
+
+    dispatch(updateUser(updatedUserProfile));
   };
 
   const onSelect = (id, selected) => {
