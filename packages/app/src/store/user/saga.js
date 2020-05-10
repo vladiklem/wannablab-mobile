@@ -44,10 +44,19 @@ function* initUser() {
   }
 }
 
-function* loginUser({ payload }) {
+function* loginUser({ payload: { provider, login, password} }) {
   yield put(loginLoading());
   try {
-    const credentials = { ...payload };
+    const credentials = provider
+      ? {
+        provider,
+        keys: {
+          token: login
+        }
+      } : {
+        login,
+        password
+      };
     const { token, user } = yield AuthService
       .login(credentials)
       .catch(e => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import styles from './Login.style';
@@ -12,12 +13,14 @@ const LoginView = props => {
     password,
     setPassword,
     onLogin,
+    onFBLogin,
     onSignup
   } = props;
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
+      <FBLoginButton onFBLogin={onFBLogin} />
       <Input
         placeholder="Enter your username..."
         value={username}

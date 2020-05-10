@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { AccessToken } from 'react-native-fbsdk';
 
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
@@ -32,7 +33,7 @@ const Login = props => {
   };
 
   const onLogin = useCallback(() => {
-    dispatch(login(username, password));
+    dispatch(login(null, username, password));
   }, [password, username]);
 
   const onSignup = useCallback(async () => {
@@ -55,6 +56,21 @@ const Login = props => {
       .catch(showErrorAlert);
   }, [username, password, openHome, showErrorAlert, appToken]);
 
+  const onFBLogin = (error, result) => {
+    if (error) {
+      console.log("login has error: " + result.error);
+    } else if (result.isCancelled) {
+      console.log("login is cancelled.");
+    } else {
+      AccessToken.getCurrentAccessToken().then(
+        (data) => {
+          const { accessToken } = data;
+          dispatch(login('facebook', accessToken, null));
+        }
+      )
+    } 
+  }
+
   useEffect(() => {
     const { status } = loginRequest;
 
@@ -70,6 +86,7 @@ const Login = props => {
       password={password}
       setPassword={setPassword}
       onLogin={onLogin}
+      onFBLogin={onFBLogin}
       onSignup={onSignup}
     />
   );

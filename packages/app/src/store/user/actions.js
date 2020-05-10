@@ -4,7 +4,8 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_LOADING,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGIN_FACEBOOK
 } from './constants';
 
 export const init = () => ({
@@ -19,13 +20,21 @@ export const initSuccess = (appToken, profile) => ({
   }
 });
 
-export const login = (login, password) => ({
+export const login = (provider, login, password) => ({
   type: LOGIN,
   payload: {
+    provider,
     login,
     password
   }
 });
+
+// export const loginFB = accessToken => ({
+//   type: LOGIN_FACEBOOK,
+//   payload: {
+//     accessToken
+//   }
+// })
 
 export const loginLoading = () => ({
   type: LOGIN_LOADING

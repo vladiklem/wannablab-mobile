@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
 import styles from './Home.styles';
 
 const HomeView = props => {
@@ -24,7 +23,6 @@ const HomeView = props => {
       <View>
         <Text>{`Your profile id: ${id}`}</Text>
         <Text>{`Your profile login: ${login}`}</Text>
-        <FBLoginButton />
         <Text>Enter id of user that you want to call</Text>
         <Input
           value={targetUserId}
