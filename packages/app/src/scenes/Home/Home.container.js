@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ConnectyCube from 'react-native-connectycube';
 
 import HomeView from './Home.view';
+import { logout } from '../../store/user/actions';
 import { AuthService, CallService } from '../../services';
 
 export const routeName = 'HOME';
 
 
 const Home = () => {
+  const dispatch = useDispatch();
   const { profile } = useSelector(state => state.user);
   const [targetUserId, setTargetUserId] = useState('');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
@@ -16,6 +18,12 @@ const Home = () => {
   const [remoteStreams, setRemoteStreams] = useState([]);
   const [localStream, setLocalStream] = useState(null);
   const [_session, _setSession] = useState(null);
+
+  useEffect(() => {
+    profile.userToken && initListeners();
+  }, []);
+
+  const onLogout = () => dispatch(logout());
 
   const showIncomingCall = useCallback(session => {
     _setSession(session);
@@ -148,26 +156,18 @@ const Home = () => {
     hideIncomingCall();
   });
 
-  useEffect(() => {
-    if (profile.userToken) {
-      initListeners();
-    }
-
-    return () => {
-      AuthService.logout();
-    };
-  }, []);
-
   return (
     <HomeView
       id={profile.id}
       login={profile.login}
+      provider={profile.provider}
       targetUserId={targetUserId}
-      setTargetUserId={setTargetUserId}
+      isActiveCall={isActiveCall}
       isIncomingCall={isIncomingCall}
+      setTargetUserId={setTargetUserId}
       onPressAccept={onPressAccept}
       onPressReject={onPressReject}
-      isActiveCall={isActiveCall}
+      onLogout={onLogout}
     />
   );
 };

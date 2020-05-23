@@ -1,15 +1,18 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { StorageService, AuthService } from '../../services';
 
-import { INIT_USER, LOGIN } from './constants';
+import { INIT_USER, LOGIN, LOGOUT } from './constants';
 import { userKeys, UNKNOWN } from '../../constants';
 import {
   initSuccess,
   loginSuccess,
   loginLoading,
-  loginFailure
+  loginFailure,
+  logoutSuccess,
+  logoutFailure
 } from './actions';
 import { initialProfile } from './reducer';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const isValid = date => (Date.now() - Date.parse(date)) / 60000 < 120;
 
@@ -44,30 +47,50 @@ function* initUser() {
   }
 }
 
-function* loginUser({ payload: { provider, login, password} }) {
+function* loginFacebook({ provider, login: token }) {
+  const credentials = {
+    provider,
+    keys: { token }
+  };
+
+  const session = yield AuthService
+    .login(credentials)
+    .catch(e => console.error(e));
+  
+  return {
+    id: session.user_id,
+    userToken: session.token,
+    fullName: UNKNOWN,
+    login: UNKNOWN,
+    provider
+  };
+}
+
+function* loginEmailPass({ login, password }) {
+  const credentials = {
+    login,
+    password
+  };
+  
+  const { token, user } = yield AuthService
+    .login(credentials)
+    .catch(e => console.error(e));
+
+  return {
+    id: user.id,
+    userToken: token,
+    login: user.login,
+    fullName: UNKNOWN,
+    provider: null
+  };
+}
+
+function* loginUser({ payload }) {
   yield put(loginLoading());
   try {
-    const credentials = provider
-      ? {
-        provider,
-        keys: {
-          token: login
-        }
-      } : {
-        login,
-        password
-      };
-    const { token, user } = yield AuthService
-      .login(credentials)
-      .catch(e => {
-        console.error(e);
-      });
-    const profile = {
-      id: user.id,
-      userToken: token,
-      login: user.login,
-      fullName: user.fullName || UNKNOWN
-    };
+    const profile = payload.provider
+      ? yield loginFacebook(payload)
+      : yield loginEmailPass(payload);
 
     yield call(StorageService.setJSON, userKeys.PROFILE, profile);
     yield put(loginSuccess(profile));
@@ -76,7 +99,17 @@ function* loginUser({ payload: { provider, login, password} }) {
   }
 }
 
+function* logoutUser() {
+  try {
+    yield call(AsyncStorage.removeItem, userKeys.PROFILE);
+    yield put(logoutSuccess());
+  } catch (e) {
+    yield put(logoutFailure(e));
+  }
+}
+
 export default [
   takeLatest(INIT_USER, initUser),
-  takeLatest(LOGIN, loginUser)
+  takeLatest(LOGIN, loginUser),
+  takeLatest(LOGOUT, logoutUser)
 ];

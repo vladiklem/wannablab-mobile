@@ -5,7 +5,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_LOADING,
   LOGIN_FAILURE,
-  LOGIN_FACEBOOK
+  LOGIN_FACEBOOK,
+  LOGOUT,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
 } from './constants';
 
 export const init = () => ({
@@ -29,13 +32,6 @@ export const login = (provider, login, password) => ({
   }
 });
 
-// export const loginFB = accessToken => ({
-//   type: LOGIN_FACEBOOK,
-//   payload: {
-//     accessToken
-//   }
-// })
-
 export const loginLoading = () => ({
   type: LOGIN_LOADING
 });
@@ -53,3 +49,18 @@ export const loginFailure = error => ({
     error
   }
 });
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
+});
+
+export const logoutFailure = error => ({
+  type: LOGOUT_FAILURE,
+  payload: {
+    error
+  }
+})

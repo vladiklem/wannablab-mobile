@@ -3,7 +3,7 @@ import ConnectyCube from 'react-native-connectycube';
 import { CREDENTIALS, CONFIG } from '../config';
 
 export default class AuthService {
-  init = async () => ConnectyCube.init(CREDENTIALS, CONFIG);
+  init = () => ConnectyCube.init(CREDENTIALS, CONFIG);
 
   createAppSession = () => new Promise((resolve, reject) => {
     ConnectyCube.createSession()
@@ -23,8 +23,8 @@ export default class AuthService {
       .catch(reject);
   });
 
-  logout = () => {
+  logout = (token) => {
     ConnectyCube.chat.disconnect();
-    ConnectyCube.destroySession();
-  }
+    ConnectyCube.destroySession()
+  };
 }

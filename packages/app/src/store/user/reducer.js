@@ -2,7 +2,9 @@ import {
   INIT_USER_SUCCESS,
   LOGIN_SUCCESS,
   LOGIN_LOADING,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
 } from './constants';
 import { requestStatus, initialRequest } from '../../constants';
 import { createReducer } from '../../utils/store';
@@ -11,13 +13,15 @@ export const initialProfile = {
   id: null,
   login: '',
   fullName: '',
-  userToken: null
+  userToken: null,
+  provider: null
 };
 
 const initialState = {
   appToken: null,
   profile: initialProfile,
-  loginRequest: initialRequest
+  loginRequest: initialRequest,
+  logoutRequest: initialRequest
 };
 
 const handlers = {
@@ -44,11 +48,27 @@ const handlers = {
       error: ''
     }
   }),
-  [LOGIN_FAILURE]: (state, payload) => ({
+  [LOGIN_FAILURE]: (state, action) => ({
     ...state,
     loginRequest: {
       status: requestStatus.FAILURE,
-      error: payload.error
+      error: action.payload.error
+    }
+  }),
+  [LOGOUT_SUCCESS]: state => ({
+    ...state,
+    profile: initialProfile,
+    loginRequest: initialRequest,
+    logoutRequest: {
+      status: requestStatus.SUCCESS,
+      error: ''
+    }
+  }),
+  [LOGOUT_FAILURE]: (state, action) => ({
+    ...state,
+    logoutRequest: {
+      status: requestStatus.FAILURE,
+      error: action.payload.error
     }
   })
 };
