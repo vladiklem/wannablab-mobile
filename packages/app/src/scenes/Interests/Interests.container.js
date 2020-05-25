@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get } from '../../store/interests/actions';
+import { getInterests } from '../../store/interests/actions';
 import { updateUser } from '../../store/user/actions';
 import { routeName as HOME } from '../Home/Home.container';
 
@@ -14,7 +14,7 @@ const Interests = ({ navigation }) => {
   const [userInterests, setUserInterests] = useState([]);
 
   useEffect(() => {
-    dispatch(get());
+    dispatch(getInterests());
   }, []);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Interests = ({ navigation }) => {
       .map(interest => interest.name);
 
     const updatedUserProfile = {
-      tag_list: userInterestsActiveNames.toString(),
+      taglist: userInterestsActiveNames.toString(),
     };
 
     dispatch(updateUser(updatedUserProfile));
@@ -43,12 +43,13 @@ const Interests = ({ navigation }) => {
         if (interest.id === id) {
           interest.active = !selected;
         }
+
         return interest;
       });
 
       setUserInterests(updatedInterests);
     },
-    [userInterests],
+    [userInterests]
   );
 
   return (

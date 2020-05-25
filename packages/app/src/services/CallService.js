@@ -24,7 +24,7 @@ export default class CallService {
     this._session = ConnectyCube.videochat.createNewSession(
       [id],
       type,
-      options,
+      options
     );
     this.setMediaDevices();
 
@@ -90,7 +90,7 @@ export default class CallService {
         reject();
       } else {
         console.log(
-          extension.busy ? `${userId} busy` : `${userId} rejected call`,
+          extension.busy ? `${userId} busy` : `${userId} rejected call`
         );
 
         resolve();
@@ -103,7 +103,7 @@ export default class CallService {
         reject();
       } else {
         console.log(
-          `${userId} has ${isInitiator ? 'stopped' : 'left'} the call`,
+          `${userId} has ${isInitiator ? 'stopped' : 'left'} the call`
         );
         resolve();
       }

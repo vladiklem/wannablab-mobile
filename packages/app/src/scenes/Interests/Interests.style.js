@@ -16,18 +16,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.$white,
   },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-  },
-  itemName: {
-    fontSize: 20,
-    color: colors.$white,
-  },
-  switch: {
-    marginHorizontal: 10,
-  },
 });
 
 export default styles;

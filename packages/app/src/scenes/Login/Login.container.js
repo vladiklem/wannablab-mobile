@@ -10,14 +10,16 @@ import { login } from '../../store/user/actions';
 
 export const routeName = 'LOGIN';
 
-const Login = (props) => {
+const Login = props => {
   const dispatch = useDispatch();
-  const { appToken, loginRequest } = useSelector((state) => state.user);
+  const { appToken, loginRequest } = useSelector(state => state.user);
   const { navigation } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const openInterests = useCallback(() => navigation.navigate(INTERESTS), [navigation]);
+  const openInterests = useCallback(() => navigation.navigate(INTERESTS), [
+    navigation,
+  ]);
 
   const showErrorAlert = (e, onConfirm = () => {}) => {
     const { errors } = e.info;
@@ -43,9 +45,7 @@ const Login = (props) => {
         token: appToken,
       },
     };
-    AuthService.signup(credentials)
-      .then(openInterests)
-      .catch(showErrorAlert);
+    AuthService.signup(credentials).then(openInterests).catch(showErrorAlert);
   }, [username, password, openInterests, showErrorAlert, appToken]);
 
   useEffect(() => {

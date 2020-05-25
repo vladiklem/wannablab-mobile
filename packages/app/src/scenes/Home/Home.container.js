@@ -21,7 +21,7 @@ const Home = () => {
       _setSession(session);
       setIsIncomingCall(true);
     },
-    [_setSession, setIsIncomingCall],
+    [_setSession, setIsIncomingCall]
   );
 
   const hideIncomingCall = useCallback(
@@ -29,7 +29,7 @@ const Home = () => {
       _setSession(null);
       setIsIncomingCall(false);
     },
-    [_setSession, setIsIncomingCall],
+    [_setSession, setIsIncomingCall]
   );
 
   const resetState = useCallback(() => {
@@ -47,12 +47,12 @@ const Home = () => {
 
       setRemoteStreams(emptyStreams);
     },
-    [setRemoteStreams],
+    [setRemoteStreams]
   );
 
   const removeRemoteStream = userId => {
     setRemoteStreams(remoteStreams =>
-      remoteStreams.filter(item => item.userId !== userId),
+      remoteStreams.filter(item => item.userId !== userId)
     );
   };
 
@@ -60,13 +60,13 @@ const Home = () => {
     (userId, stream) => {
       setRemoteStreams(remoteStreams => {
         const updatedRemoteStreams = remoteStreams.map(item =>
-          item.userId === userId ? { userId, stream } : { ...item },
+          item.userId === userId ? { userId, stream } : { ...item }
         );
 
         return { remoteStreams: updatedRemoteStreams };
       });
     },
-    [setRemoteStreams],
+    [setRemoteStreams]
   );
 
   const onCallListener = useCallback(
@@ -78,7 +78,7 @@ const Home = () => {
           hideIncomingCall();
         });
     },
-    [showIncomingCall, hideIncomingCall],
+    [showIncomingCall, hideIncomingCall]
   );
 
   const onAcceptCallListener = (session, userId, extension) => {
@@ -148,7 +148,7 @@ const Home = () => {
     CallService.acceptCall(_session).then(stream => {
       const { opponentsIDs, initiatorID, currentUserID } = _session;
       const opponentsIds = [initiatorID, ...opponentsIDs].filter(
-        userId => currentUserID !== userId,
+        userId => currentUserID !== userId
       );
 
       initRemoteStreams(opponentsIds);
