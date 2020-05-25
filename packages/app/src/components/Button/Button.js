@@ -6,7 +6,7 @@ import styles from './Button.styles';
 const Button = props => {
   const {
     label,
-    onPress
+    onPress,
   } = props;
 
   return (

@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LoginView from './Login.view';
-import { routeName as HOME } from '../Home/Home.container';
+import { routeName as INTERESTS } from '../Interests/Interests.container';
 import { AuthService } from '../../services';
 import { isSuccess } from '../../utils/requests';
 import { login } from '../../store/user/actions';
@@ -17,18 +17,14 @@ const Login = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const openHome = useCallback(() => navigation.navigate(HOME), [navigation]);
+  const openInterests = useCallback(() => navigation.navigate(INTERESTS), [
+    navigation,
+  ]);
 
   const showErrorAlert = (e, onConfirm = () => {}) => {
     const { errors } = e.info;
     const errorMessage = errors.login[0] || errors[0];
-    Alert.alert(
-      e.code.toFixed(0),
-      errorMessage,
-      [
-        { text: 'ok', onConfirm }
-      ]
-    );
+    Alert.alert(e.code.toFixed(0), errorMessage, [{ text: 'ok', onConfirm }]);
   };
 
   const onLogin = useCallback(() => {
@@ -46,20 +42,17 @@ const Login = props => {
       login: username,
       password,
       keys: {
-        token: appToken
-      }
+        token: appToken,
+      },
     };
-    AuthService
-      .signup(credentials)
-      .then(openHome)
-      .catch(showErrorAlert);
-  }, [username, password, openHome, showErrorAlert, appToken]);
+    AuthService.signup(credentials).then(openInterests).catch(showErrorAlert);
+  }, [username, password, openInterests, showErrorAlert, appToken]);
 
   useEffect(() => {
     const { status } = loginRequest;
 
     if (isSuccess(status)) {
-      openHome();
+      openInterests();
     }
   }, [loginRequest]);
 
