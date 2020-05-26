@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
+import Toolbar from '../../components/Toolbar/Toolbar.view';
+import Conference from '../Conference/Conference.view';
 import styles from './Home.styles';
 
 const HomeView = props => {
@@ -13,8 +15,12 @@ const HomeView = props => {
     login,
     provider,
     targetUserId,
+    streams,
     isIncomingCall,
     isActiveCall,
+    initRemoteStreams,
+    resetState,
+    setLocalStream,
     setTargetUserId,
     onPressAccept,
     onPressReject,
@@ -23,7 +29,7 @@ const HomeView = props => {
 
   return (
     <SafeAreaView style={styles.f1}>
-      <View>
+      {/* <View> */}
         {provider ? (
           <FBLoginButton
             onFBLogout={onLogout}
@@ -41,7 +47,6 @@ const HomeView = props => {
           value={targetUserId}
           onChangeText={setTargetUserId}
         />
-        <Button label="Start Call" onPress={() => {}} />
         {isIncomingCall && (
           <>
             <Button
@@ -54,13 +59,14 @@ const HomeView = props => {
             />
           </>
         )}
-        {isActiveCall && (
-          <Button
-            label="End call"
-            onPress={() => {}}
-          />
-        )}
-      </View>
+        <Conference streams={streams} />
+        <Toolbar
+          opponentId={targetUserId}
+          initRemoteStreams={initRemoteStreams}
+          setLocalStream={setLocalStream}
+          resetState={resetState}
+        />
+      {/* </View> */}
     </SafeAreaView>
   );
 };

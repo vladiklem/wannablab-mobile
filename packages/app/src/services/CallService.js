@@ -23,20 +23,20 @@ export default class CallService {
     const type = ConnectyCube.videochat.CallType.VIDEO;
     const options = {};
 
-    this._session = ConnectyCube.videochat.createNewSession(
-      [id],
-      type,
-      options
-    );
-    this.setMediaDevices();
+    // this._session = ConnectyCube.videochat.createNewSession(
+    //   [id],
+    //   type,
+    //   options
+    // );
+    // this.setMediaDevices();
 
-    return this._session
-      .getUserMedia(this.MEDIA_OPTIONS)
-      .then(stream => {
-        this._session.call({});
+    // return this._session
+    //   .getUserMedia(this.MEDIA_OPTIONS)
+    //   .then(localStream => {
+    //     this._session.call({});
 
-        return stream;
-      });
+    //     return localStream;
+    //   });
   }
 
   stopCall = () => {

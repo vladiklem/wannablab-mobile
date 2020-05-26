@@ -23,7 +23,7 @@ export default class AuthService {
       .catch(reject);
   });
 
-  logout = (token) => {
+  logout = () => {
     ConnectyCube.chat.disconnect();
     ConnectyCube.destroySession()
   };
