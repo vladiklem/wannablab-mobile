@@ -62,6 +62,7 @@ const handlers = {
     ...state,
     profile: initialProfile,
     loginRequest: initialRequest,
+    signupRequest: initialRequest,
     logoutRequest: {
       status: requestStatus.SUCCESS,
       error: ''

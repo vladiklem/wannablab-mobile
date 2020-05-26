@@ -5,7 +5,7 @@ import { AccessToken } from 'react-native-fbsdk';
 
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
-import { isSuccess } from '../../utils/requests';
+import { isSuccess, isFailure } from '../../utils/requests';
 import { login, signUp } from '../../store/user/actions';
 
 export const routeName = 'LOGIN';
@@ -45,11 +45,17 @@ const Login = props => {
   }
 
   useEffect(() => {
-    const { status: logStatus } = loginRequest;
-    const { status: signStatus } = signupRequest;
+    const { status } = signupRequest;
 
-    (isSuccess(logStatus) || isSuccess(signStatus)) && openHome();
-  }, [loginRequest, signupRequest]);
+    isSuccess(status) && openHome();
+  }, [signupRequest]);
+
+  useEffect(() => {
+    const { status, error } = loginRequest;
+
+    isSuccess(status) && openHome();
+    isFailure(status) && Alert.alert(error);
+  }, [loginRequest])
 
   return (
     <LoginView
