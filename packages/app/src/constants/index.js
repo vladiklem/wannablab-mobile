@@ -17,3 +17,5 @@ export const userKeys = {
 };
 
 export const UNKNOWN = 'unknown';
+
+export const FACEBOOK = 'facebook';

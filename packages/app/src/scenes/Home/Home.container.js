@@ -12,11 +12,11 @@ export const routeName = 'HOME';
 const Home = () => {
   const dispatch = useDispatch();
   const { profile } = useSelector(state => state.user);
-  const [targetUserId, setTargetUserId] = useState('');
+  const [targetUserId, setTargetUserId] = useState('1417921');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
   const [remoteStreams, setRemoteStreams] = useState([]);
-  const [localStream, setLocalStream] = useState(null);
+  const [localStream, setLocalStream] = useState({});
   const [_session, _setSession] = useState(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Home = () => {
   }, [_setSession, setIsIncomingCall]);
 
   const resetState = useCallback(() => {
-    setLocalStream(null);
+    setLocalStream({});
     setRemoteStreams([]);
     setIsActiveCall(false);
   }, [setLocalStream, setRemoteStreams, setIsActiveCall]);
@@ -156,14 +156,20 @@ const Home = () => {
     hideIncomingCall();
   });
 
+  const streams = [localStream, ...remoteStreams];
+
   return (
     <HomeView
       id={profile.id}
       login={profile.login}
       provider={profile.provider}
       targetUserId={targetUserId}
+      streams={streams}
       isActiveCall={isActiveCall}
       isIncomingCall={isIncomingCall}
+      initRemoteStreams={initRemoteStreams}
+      resetState={resetState}
+      setLocalStream={setLocalStream}
       setTargetUserId={setTargetUserId}
       onPressAccept={onPressAccept}
       onPressReject={onPressReject}

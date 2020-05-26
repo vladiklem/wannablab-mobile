@@ -1,15 +1,17 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { StorageService, AuthService } from '../../services';
 
-import { INIT_USER, LOGIN, LOGOUT } from './constants';
-import { userKeys, UNKNOWN } from '../../constants';
+import { INIT_USER, LOGIN, LOGOUT, SIGN_UP } from './constants';
+import { userKeys, UNKNOWN, FACEBOOK } from '../../constants';
 import {
   initSuccess,
   loginSuccess,
   loginLoading,
   loginFailure,
   logoutSuccess,
-  logoutFailure
+  logoutFailure,
+  signUpSuccess,
+  signUpLoading,
 } from './actions';
 import { initialProfile } from './reducer';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -44,8 +46,9 @@ function* initUser() {
     }
   } catch (e) {
     console.error(e);
+    Alert.alert('some fcking error was occured, please try again later');
   }
-}
+};
 
 function* loginFacebook({ provider, login: token }) {
   const credentials = {
@@ -64,7 +67,7 @@ function* loginFacebook({ provider, login: token }) {
     login: UNKNOWN,
     provider
   };
-}
+};
 
 function* loginEmailPass({ login, password }) {
   const credentials = {
@@ -83,7 +86,7 @@ function* loginEmailPass({ login, password }) {
     fullName: UNKNOWN,
     provider: null
   };
-}
+};
 
 function* loginUser({ payload }) {
   yield put(loginLoading());
@@ -97,19 +100,36 @@ function* loginUser({ payload }) {
   } catch (e) {
     yield put(loginFailure(e.message));
   }
-}
+};
 
 function* logoutUser() {
   try {
     yield call(AsyncStorage.removeItem, userKeys.PROFILE);
+    yield call(AuthService.logout);
     yield put(logoutSuccess());
   } catch (e) {
     yield put(logoutFailure(e));
+  }
+};
+
+function* signUpUser({ payload }) {
+  try {
+    yield put(signUpLoading());
+    const { login, password } = payload;
+    const { appToken: token } = yield select(state => state.user);
+    yield AuthService
+      .signup({ login, password, keys: { token }})
+      .catch(e => console.error(e));
+    const profile = yield loginEmailPass({ login, password });
+    yield put(signUpSuccess(profile));
+  } catch (e) {
+    console.error(e);
   }
 }
 
 export default [
   takeLatest(INIT_USER, initUser),
   takeLatest(LOGIN, loginUser),
-  takeLatest(LOGOUT, logoutUser)
+  takeLatest(LOGOUT, logoutUser),
+  takeLatest(SIGN_UP, signUpUser),
 ];

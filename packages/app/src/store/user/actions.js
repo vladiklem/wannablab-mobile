@@ -5,10 +5,12 @@ import {
   LOGIN_SUCCESS,
   LOGIN_LOADING,
   LOGIN_FAILURE,
-  LOGIN_FACEBOOK,
   LOGOUT,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+  SIGN_UP,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_LOADING
 } from './constants';
 
 export const init = () => ({
@@ -63,4 +65,23 @@ export const logoutFailure = error => ({
   payload: {
     error
   }
-})
+});
+
+export const signUp = (login, password) => ({
+  type: SIGN_UP,
+  payload: {
+    login,
+    password,
+  },
+});
+
+export const signUpLoading = () => ({
+  type: SIGN_UP_LOADING,
+});
+
+export const signUpSuccess = profile => ({
+  type: SIGN_UP_SUCCESS,
+  payload: {
+    profile,
+  },
+});
