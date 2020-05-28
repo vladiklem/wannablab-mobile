@@ -146,15 +146,16 @@ function* signUpUser({ payload }) {
 
 function* updateUser({ payload }) {
   try {
-    const { user } = yield AuthService.update(payload.updatedProfile).catch(
-      e => {
+    console.log(payload.updatedProfile);
+    const { user: { full_name, user_tags } } = yield AuthService
+      .update(payload.updatedProfile)
+      .catch(e => {
         console.error(e);
-      }
-    );
+      });
 
     const updatedProfile = {
-      fullName: user.full_name || UNKNOWN,
-      interests: user.user_tags.split(','),
+      fullName: full_name || UNKNOWN,
+      interests: user_tags && user_tags.split(','),
     };
 
     yield put(updateUserSuccess(updatedProfile));

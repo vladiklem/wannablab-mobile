@@ -6,15 +6,16 @@ import { AccessToken } from 'react-native-fbsdk';
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
 import { routeName as INTERESTS } from '../Interests/Interests.container';
-import { isSuccess, isFailure } from '../../utils/requests';
 import { login, signUp } from '../../store/user/actions';
+import { isSuccess, isFailure } from '../../utils/requests';
+import { FACEBOOK } from '../../constants';
 
 export const routeName = 'LOGIN';
 
 const Login = props => {
+  const { navigation } = props;
   const dispatch = useDispatch();
   const { loginRequest, signupRequest } = useSelector(state => state.user);
-  const { navigation } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,14 +23,24 @@ const Login = props => {
     navigation,
   ]);
 
+  const isFormValid = useCallback(() => {
+    password.trim().length < 8 && Alert.alert('password min length is 8 characters');
+
+    return password.trim().length >= 8;
+  }, [password]);
+
+  const finishAuth = useCallback((action, ...args) => {
+    dispatch(action(...args));
+    setPassword('');
+    setUsername('');
+  }, [setPassword, setUsername]);
+
   const onLogin = useCallback(() => {
-    dispatch(login(null, username, password));
+    isFormValid() && finishAuth(login, null, username, password);
   }, [password, username]);
 
   const onSignup = useCallback(async () => {
-    password.length < 8
-      ? Alert.alert('password min length is 8 characters')
-      : dispatch(signUp(username, password))
+    isFormValid() && finishAuth(signUp, username, password);
   }, [username, password]);
 
   const onFBLogin = (error, result) => {
@@ -41,7 +52,7 @@ const Login = props => {
       AccessToken.getCurrentAccessToken().then(
         (data) => {
           const { accessToken } = data;
-          dispatch(login('facebook', accessToken, null));
+          dispatch(login(FACEBOOK, accessToken, null));
         }
       )
     } 

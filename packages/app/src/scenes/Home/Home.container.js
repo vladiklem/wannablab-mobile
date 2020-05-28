@@ -3,14 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import ConnectyCube from 'react-native-connectycube';
 
 import HomeView from './Home.view';
+import { routeName as LOGIN } from '../../scenes/Login/Login.container'; 
 import { logout } from '../../store/user/actions';
-import { AuthService, CallService } from '../../services';
+import { CallService } from '../../services';
+import { isSuccess } from '../../utils/requests';
 
 export const routeName = 'HOME';
 
-const Home = () => {
+const Home = props => {
+  const { navigation } = props;
   const dispatch = useDispatch();
-  const { profile } = useSelector(state => state.user);
+  const { profile, logoutRequest } = useSelector(state => state.user);
   const [targetUserId, setTargetUserId] = useState('1417921');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
@@ -18,9 +21,19 @@ const Home = () => {
   const [localStream, setLocalStream] = useState({});
   const [_session, _setSession] = useState(null);
 
+  const openScene = useCallback(routeName => {
+    navigation.navigate(routeName);
+  }, [navigation]);
+
   useEffect(() => {
     profile.userToken && initListeners();
   }, []);
+
+  useEffect(() => {
+    const { status } = logoutRequest;
+
+    isSuccess(status) && openScene(LOGIN);
+  }, [logoutRequest]);
 
   const onLogout = () => dispatch(logout());
 
@@ -117,7 +130,6 @@ const Home = () => {
       })
       .catch(e => {
         console.error(e);
-        // setIsIncomingCall(false);
       });
   };
 
@@ -133,7 +145,6 @@ const Home = () => {
     CallService.handleOnRemoteStreamListener(userId)
       .then(() => {
         updateRemoteStream(userId, stream);
-        // setIsIncomingCall()
       })
       .catch(e => {
         console.error(e);

@@ -48,6 +48,7 @@ const handlers = {
       ...state.profile,
       ...action.payload.profile,
     },
+    logoutRequest: initialRequest,
     loginRequest: {
       status: requestStatus.SUCCESS,
       error: '',

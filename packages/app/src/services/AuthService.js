@@ -12,14 +12,6 @@ export default class AuthService {
         .catch(reject);
     });
 
-  signup = userProfile =>
-    new Promise((resolve, reject) => {
-      ConnectyCube.users
-        .signup(userProfile)
-        .then(resolve)
-        .catch(reject);
-    });
-
   update = userProfile =>
     new Promise((resolve, reject) => {
       ConnectyCube.users
@@ -31,6 +23,14 @@ export default class AuthService {
   login = user =>
     new Promise((resolve, reject) => {
       ConnectyCube.createSession(user)
+        .then(resolve)
+        .catch(reject);
+    });
+
+  signup = userProfile =>
+    new Promise((resolve, reject) => {
+      ConnectyCube.users
+        .signup(userProfile)
         .then(resolve)
         .catch(reject);
     });
