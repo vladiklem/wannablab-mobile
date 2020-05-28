@@ -8,7 +8,6 @@ import { AuthService, CallService } from '../../services';
 
 export const routeName = 'HOME';
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const { profile } = useSelector(state => state.user);
@@ -30,10 +29,13 @@ const Home = () => {
     setIsIncomingCall(true);
   }, [_setSession, setIsIncomingCall]);
 
-  const hideIncomingCall = useCallback(session => {
-    _setSession(null);
-    setIsIncomingCall(false);
-  }, [_setSession, setIsIncomingCall]);
+  const hideIncomingCall = useCallback(
+    session => {
+      _setSession(null);
+      setIsIncomingCall(false);
+    },
+    [_setSession, setIsIncomingCall]
+  );
 
   const resetState = useCallback(() => {
     setLocalStream({});
@@ -41,39 +43,48 @@ const Home = () => {
     setIsActiveCall(false);
   }, [setLocalStream, setRemoteStreams, setIsActiveCall]);
 
-  const initRemoteStreams = useCallback(opponentsIds => {
-    const emptyStreams = opponentsIds.map(userId => ({
-      userId,
-      stream: null
-    }));
+  const initRemoteStreams = useCallback(
+    opponentsIds => {
+      const emptyStreams = opponentsIds.map(userId => ({
+        userId,
+        stream: null,
+      }));
 
-    setRemoteStreams(emptyStreams);
-  }, [setRemoteStreams]);
+      setRemoteStreams(emptyStreams);
+    },
+    [setRemoteStreams]
+  );
 
   const removeRemoteStream = userId => {
-    setRemoteStreams(
-      remoteStreams => remoteStreams.filter(item => item.userId !== userId)
+    setRemoteStreams(remoteStreams =>
+      remoteStreams.filter(item => item.userId !== userId)
     );
   };
 
-  const updateRemoteStream = useCallback((userId, stream) => {
-    setRemoteStreams(remoteStreams => {
-      const updatedRemoteStreams = remoteStreams.map(
-        item => item.userId === userId ? { userId, stream } : { ...item }
-      );
+  const updateRemoteStream = useCallback(
+    (userId, stream) => {
+      setRemoteStreams(remoteStreams => {
+        const updatedRemoteStreams = remoteStreams.map(item =>
+          item.userId === userId ? { userId, stream } : { ...item }
+        );
 
-      return { remoteStreams: updatedRemoteStreams };
-    });
-  }, [setRemoteStreams]);
-
-  const onCallListener = useCallback((session, extension) => {
-    CallService.handleOnCallListener(session)
-      .then(() => showIncomingCall(session))
-      .catch(e => {
-        console.error(e);
-        hideIncomingCall();
+        return { remoteStreams: updatedRemoteStreams };
       });
-  }, [showIncomingCall, hideIncomingCall]);
+    },
+    [setRemoteStreams]
+  );
+
+  const onCallListener = useCallback(
+    (session, extension) => {
+      CallService.handleOnCallListener(session)
+        .then(() => showIncomingCall(session))
+        .catch(e => {
+          console.error(e);
+          hideIncomingCall();
+        });
+    },
+    [showIncomingCall, hideIncomingCall]
+  );
 
   const onAcceptCallListener = (session, userId, extension) => {
     CallService.handleOnAcceptCallListener(session, userId, extension)
@@ -163,6 +174,7 @@ const Home = () => {
       id={profile.id}
       login={profile.login}
       provider={profile.provider}
+      userInterests={profile.interests || ''}
       targetUserId={targetUserId}
       streams={streams}
       isActiveCall={isActiveCall}
@@ -177,6 +189,5 @@ const Home = () => {
     />
   );
 };
-
 
 export default Home;

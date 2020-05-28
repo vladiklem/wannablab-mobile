@@ -5,6 +5,7 @@ import { AccessToken } from 'react-native-fbsdk';
 
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
+import { routeName as INTERESTS } from '../Interests/Interests.container';
 import { isSuccess, isFailure } from '../../utils/requests';
 import { login, signUp } from '../../store/user/actions';
 
@@ -17,7 +18,9 @@ const Login = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const openHome = useCallback(() => navigation.navigate(HOME), [navigation]);
+  const openScene = useCallback(routeName => navigation.navigate(routeName), [
+    navigation,
+  ]);
 
   const onLogin = useCallback(() => {
     dispatch(login(null, username, password));
@@ -47,13 +50,13 @@ const Login = props => {
   useEffect(() => {
     const { status } = signupRequest;
 
-    isSuccess(status) && openHome();
+    isSuccess(status) && openScene(INTERESTS);
   }, [signupRequest]);
 
   useEffect(() => {
     const { status, error } = loginRequest;
 
-    isSuccess(status) && openHome();
+    isSuccess(status) && openScene(HOME);
     isFailure(status) && Alert.alert(error);
   }, [loginRequest])
 

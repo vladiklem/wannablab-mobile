@@ -10,19 +10,21 @@ import {
   LOGOUT_FAILURE,
   SIGN_UP,
   SIGN_UP_SUCCESS,
-  SIGN_UP_LOADING
+  SIGN_UP_LOADING,
+  UPDATE_USER,
+  UPDATE_USER_SUCCESS,
 } from './constants';
 
 export const init = () => ({
-  type: INIT_USER
+  type: INIT_USER,
 });
 
 export const initSuccess = (appToken, profile) => ({
   type: INIT_USER_SUCCESS,
   payload: {
     appToken,
-    profile
-  }
+    profile,
+  },
 });
 
 export const login = (provider, login, password) => ({
@@ -30,26 +32,40 @@ export const login = (provider, login, password) => ({
   payload: {
     provider,
     login,
-    password
-  }
+    password,
+  },
 });
 
 export const loginLoading = () => ({
-  type: LOGIN_LOADING
+  type: LOGIN_LOADING,
 });
 
 export const loginSuccess = profile => ({
   type: LOGIN_SUCCESS,
   payload: {
-    profile
-  }
+    profile,
+  },
 });
 
 export const loginFailure = error => ({
   type: LOGIN_FAILURE,
   payload: {
-    error
-  }
+    error,
+  },
+});
+
+export const updateUser = updatedProfile => ({
+  type: UPDATE_USER,
+  payload: {
+    updatedProfile,
+  },
+});
+
+export const updateUserSuccess = profile => ({
+  type: UPDATE_USER_SUCCESS,
+  payload: {
+    profile,
+  },
 });
 
 export const logout = () => ({

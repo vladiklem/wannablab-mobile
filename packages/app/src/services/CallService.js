@@ -10,14 +10,12 @@ export default class CallService {
     this._session = session;
     this.setMediaDevices();
 
-    return this._session
-      .getUserMedia(this.MEDIA_OPTIONS)
-      .then(stream => {
-        this._session.accept({});
+    return this._session.getUserMedia(this.MEDIA_OPTIONS).then(stream => {
+      this._session.accept({});
 
-        return stream;
-      });
-  }
+      return stream;
+    });
+  };
 
   startCall = id => {
     const type = ConnectyCube.videochat.CallType.VIDEO;
@@ -46,34 +44,36 @@ export default class CallService {
       this._session = null;
       this.mediaDevices = [];
     }
-  }
+  };
 
   rejectCall = (session, extension) => session.reject(extension);
 
-  handleOnUserNotAnswerListener = userId => new Promise((resolve, reject) => {
-    if (!this._session) {
-      reject();
-    } else {
-      console.log(`${userId} did not answer`);
+  handleOnUserNotAnswerListener = userId =>
+    new Promise((resolve, reject) => {
+      if (!this._session) {
+        reject();
+      } else {
+        console.log(`${userId} did not answer`);
+        resolve();
+      }
+    });
+
+  handleOnCallListener = session =>
+    new Promise((resolve, reject) => {
+      if (session.initiatorID === session.currentUserId) {
+        reject();
+      }
+
+      if (this._session) {
+        this.rejectCall(session, { busy: true });
+        reject();
+      }
+
       resolve();
-    }
-  });
+    });
 
-  handleOnCallListener = session => new Promise((resolve, reject) => {
-    if (session.initiatorID === session.currentUserId) {
-      reject();
-    }
-
-    if (this._session) {
-      this.rejectCall(session, { busy: true });
-      reject();
-    }
-
-    resolve();
-  });
-
-  handleOnAcceptCallListener = (session, userId) => new Promise(
-    (resolve, reject) => {
+  handleOnAcceptCallListener = (session, userId) =>
+    new Promise((resolve, reject) => {
       if (userId === session.currentUserId) {
         this._session = null;
 
@@ -82,47 +82,46 @@ export default class CallService {
         console.log(`${userId} has accepted the call`);
         resolve();
       }
-    }
-  );
+    });
 
-  handleOnRejectCallListener = (session, userId, extension = {}) => new Promise(
-    (resolve, reject) => {
+  handleOnRejectCallListener = (session, userId, extension = {}) =>
+    new Promise((resolve, reject) => {
       if (userId === session.currentUserID) {
         this._session = null;
 
         reject();
       } else {
-        console.log(extension.busy ? `${userId} busy` : `${userId} rejected call`);
+        console.log(
+          extension.busy ? `${userId} busy` : `${userId} rejected call`
+        );
 
         resolve();
       }
-    }
-  );
+    });
 
-  handleOnStopCallListener = (userId, isInitiator) => new Promise(
-    (resolve, reject) => {
+  handleOnStopCallListener = (userId, isInitiator) =>
+    new Promise((resolve, reject) => {
       if (!this._session) {
         reject();
       } else {
-        console.log(`${userId} has ${isInitiator ? 'stopped' : 'left'} the call`);
+        console.log(
+          `${userId} has ${isInitiator ? 'stopped' : 'left'} the call`
+        );
         resolve();
       }
-    }
-  );
+    });
 
-  handleOnRemoteStreamListener = () => new Promise(
-    (resolve, reject) => {
+  handleOnRemoteStreamListener = () =>
+    new Promise((resolve, reject) => {
       if (!this._session) {
         reject();
       } else {
         resolve();
       }
-    }
-  );
+    });
 
-  setMediaDevices = () => ConnectyCube.videochat.getMediaDevices().then(
-    mediaDevices => {
+  setMediaDevices = () =>
+    ConnectyCube.videochat.getMediaDevices().then(mediaDevices => {
       this.mediaDevices = mediaDevices;
-    }
-  );
+    });
 }

@@ -13,8 +13,8 @@ const HomeView = props => {
     id,
     login,
     provider,
+    userInterests,
     targetUserId,
-    streams,
     isIncomingCall,
     initRemoteStreams,
     resetState,
@@ -39,6 +39,7 @@ const HomeView = props => {
       )}
       <Text>{`Your profile id: ${id}`}</Text>
       <Text>{`Your profile login: ${login}`}</Text>
+      <Text>{`User interests: ${userInterests.toString()}`}</Text>
       <Text>Enter id of user that you want to call</Text>
       <Input
         value={targetUserId}

@@ -1,7 +1,13 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { StorageService, AuthService } from '../../services';
 
-import { INIT_USER, LOGIN, LOGOUT, SIGN_UP } from './constants';
+import {
+  INIT_USER,
+  UPDATE_USER,
+  LOGIN,
+  LOGOUT,
+  SIGN_UP
+} from './constants';
 import { userKeys, UNKNOWN } from '../../constants';
 import {
   initSuccess,
@@ -12,6 +18,7 @@ import {
   logoutFailure,
   signUpSuccess,
   signUpLoading,
+  updateUserSuccess,
 } from './actions';
 import { initialProfile } from './reducer';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -137,9 +144,29 @@ function* signUpUser({ payload }) {
   }
 }
 
+function* updateUser({ payload }) {
+  try {
+    const { user } = yield AuthService.update(payload.updatedProfile).catch(
+      e => {
+        console.error(e);
+      }
+    );
+
+    const updatedProfile = {
+      fullName: user.full_name || UNKNOWN,
+      interests: user.user_tags.split(','),
+    };
+
+    yield put(updateUserSuccess(updatedProfile));
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 export default [
   takeLatest(INIT_USER, initUser),
   takeLatest(LOGIN, loginUser),
   takeLatest(LOGOUT, logoutUser),
   takeLatest(SIGN_UP, signUpUser),
+  takeLatest(UPDATE_USER, updateUser),
 ];

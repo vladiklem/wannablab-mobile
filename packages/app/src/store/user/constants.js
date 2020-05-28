@@ -23,3 +23,7 @@ export const SIGN_UP_LOADING = 'SIGN_UP_LOADING';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+
+export const UPDATE_USER = 'UPDATE_USER';
+
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';

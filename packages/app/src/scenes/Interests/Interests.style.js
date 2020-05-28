@@ -5,19 +5,16 @@ import colors from '../../theme/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     paddingHorizontal: 40,
     backgroundColor: colors.$lightPurple,
+    paddingBottom: 10,
   },
   title: {
-    marginBottom: 10,
+    textAlign: 'center',
+    marginVertical: 10,
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.$white,
-  },
-  input: {
-    marginTop: 20,
   },
 });
 
