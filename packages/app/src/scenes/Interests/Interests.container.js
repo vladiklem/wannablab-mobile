@@ -29,7 +29,7 @@ const Interests = ({ navigation }) => {
       .map(interest => interest.name);
 
     const updatedUserProfile = {
-      taglist: userInterestsActiveNames.toString(),
+      tag_list: userInterestsActiveNames.toString(),
     };
 
     dispatch(updateUser(updatedUserProfile));
