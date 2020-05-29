@@ -1,60 +1,75 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { AccessToken } from 'react-native-fbsdk';
 
 import LoginView from './Login.view';
+import { routeName as HOME } from '../Home/Home.container';
 import { routeName as INTERESTS } from '../Interests/Interests.container';
-import { AuthService } from '../../services';
-import { isSuccess } from '../../utils/requests';
-import { login } from '../../store/user/actions';
+import { login, signUp } from '../../store/user/actions';
+import { isSuccess, isFailure } from '../../utils/requests';
+import { FACEBOOK } from '../../constants';
 
 export const routeName = 'LOGIN';
 
 const Login = props => {
-  const dispatch = useDispatch();
-  const { appToken, loginRequest } = useSelector(state => state.user);
   const { navigation } = props;
+  const dispatch = useDispatch();
+  const { loginRequest, signupRequest } = useSelector(state => state.user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const openInterests = useCallback(() => navigation.navigate(INTERESTS), [
+  const openScene = useCallback(routeName => navigation.navigate(routeName), [
     navigation,
   ]);
 
-  const showErrorAlert = (e, onConfirm = () => {}) => {
-    const { errors } = e.info;
-    const errorMessage = errors.login[0] || errors[0];
-    Alert.alert(e.code.toFixed(0), errorMessage, [{ text: 'ok', onConfirm }]);
-  };
+  const isFormValid = useCallback(() => {
+    password.trim().length < 8 && Alert.alert('password min length is 8 characters');
+
+    return password.trim().length >= 8;
+  }, [password]);
+
+  const finishAuth = useCallback((action, ...args) => {
+    dispatch(action(...args));
+    setPassword('');
+    setUsername('');
+  }, [setPassword, setUsername]);
 
   const onLogin = useCallback(() => {
-    dispatch(login(username, password));
+    isFormValid() && finishAuth(login, null, username, password);
   }, [password, username]);
 
   const onSignup = useCallback(async () => {
-    if (password.length < 8) {
-      Alert.alert('password min length is 8 characters');
+    isFormValid() && finishAuth(signUp, username, password);
+  }, [username, password]);
 
-      return;
-    }
-
-    const credentials = {
-      login: username,
-      password,
-      keys: {
-        token: appToken,
-      },
-    };
-    AuthService.signup(credentials).then(openInterests).catch(showErrorAlert);
-  }, [username, password, openInterests, showErrorAlert, appToken]);
+  const onFBLogin = (error, result) => {
+    if (error) {
+      console.log("login has error: " + result.error);
+    } else if (result.isCancelled) {
+      console.log("login is cancelled.");
+    } else {
+      AccessToken.getCurrentAccessToken().then(
+        (data) => {
+          const { accessToken } = data;
+          dispatch(login(FACEBOOK, accessToken, null));
+        }
+      )
+    } 
+  }
 
   useEffect(() => {
-    const { status } = loginRequest;
+    const { status } = signupRequest;
 
-    if (isSuccess(status)) {
-      openInterests();
-    }
-  }, [loginRequest]);
+    isSuccess(status) && openScene(INTERESTS);
+  }, [signupRequest]);
+
+  useEffect(() => {
+    const { status, error } = loginRequest;
+
+    isSuccess(status) && openScene(HOME);
+    isFailure(status) && Alert.alert(error);
+  }, [loginRequest])
 
   return (
     <LoginView
@@ -63,6 +78,7 @@ const Login = props => {
       password={password}
       setPassword={setPassword}
       onLogin={onLogin}
+      onFBLogin={onFBLogin}
       onSignup={onSignup}
     />
   );

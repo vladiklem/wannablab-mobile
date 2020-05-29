@@ -1,6 +1,0 @@
-module Pods_wannablabMobile {
-  umbrella header "Pods-wannablabMobile-umbrella.h"
-
-  export *
-  module * { export * }
-}

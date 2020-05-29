@@ -1,28 +1,46 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ConnectyCube from 'react-native-connectycube';
 
 import HomeView from './Home.view';
-import { AuthService, CallService } from '../../services';
+import { routeName as LOGIN } from '../../scenes/Login/Login.container'; 
+import { logout } from '../../store/user/actions';
+import { CallService } from '../../services';
+import { isSuccess } from '../../utils/requests';
 
 export const routeName = 'HOME';
 
-const Home = () => {
-  const { profile } = useSelector(state => state.user);
-  const [targetUserId, setTargetUserId] = useState('');
+const Home = props => {
+  const { navigation } = props;
+  const dispatch = useDispatch();
+  const { profile, logoutRequest } = useSelector(state => state.user);
+  const [targetUserId, setTargetUserId] = useState('1417921');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
   const [remoteStreams, setRemoteStreams] = useState([]);
-  const [localStream, setLocalStream] = useState(null);
+  const [localStream, setLocalStream] = useState({});
   const [_session, _setSession] = useState(null);
 
-  const showIncomingCall = useCallback(
-    session => {
-      _setSession(session);
-      setIsIncomingCall(true);
-    },
-    [_setSession, setIsIncomingCall]
-  );
+  const openScene = useCallback(routeName => {
+    navigation.navigate(routeName);
+  }, [navigation]);
+
+  useEffect(() => {
+    profile.userToken && initListeners();
+  }, []);
+
+  useEffect(() => {
+    const { status } = logoutRequest;
+
+    isSuccess(status) && openScene(LOGIN);
+  }, [logoutRequest]);
+
+  const onLogout = () => dispatch(logout());
+
+  const showIncomingCall = useCallback(session => {
+    _setSession(session);
+    setIsIncomingCall(true);
+  }, [_setSession, setIsIncomingCall]);
 
   const hideIncomingCall = useCallback(
     session => {
@@ -33,7 +51,7 @@ const Home = () => {
   );
 
   const resetState = useCallback(() => {
-    setLocalStream(null);
+    setLocalStream({});
     setRemoteStreams([]);
     setIsActiveCall(false);
   }, [setLocalStream, setRemoteStreams, setIsActiveCall]);
@@ -112,7 +130,6 @@ const Home = () => {
       })
       .catch(e => {
         console.error(e);
-        // setIsIncomingCall(false);
       });
   };
 
@@ -128,7 +145,6 @@ const Home = () => {
     CallService.handleOnRemoteStreamListener(userId)
       .then(() => {
         updateRemoteStream(userId, stream);
-        // setIsIncomingCall()
       })
       .catch(e => {
         console.error(e);
@@ -162,27 +178,25 @@ const Home = () => {
     hideIncomingCall();
   });
 
-  useEffect(() => {
-    if (profile.userToken) {
-      initListeners();
-    }
-
-    return () => {
-      AuthService.logout();
-    };
-  }, []);
+  const streams = [localStream, ...remoteStreams];
 
   return (
     <HomeView
       id={profile.id}
       login={profile.login}
+      provider={profile.provider}
       userInterests={profile.interests || ''}
       targetUserId={targetUserId}
-      setTargetUserId={setTargetUserId}
+      streams={streams}
+      isActiveCall={isActiveCall}
       isIncomingCall={isIncomingCall}
+      initRemoteStreams={initRemoteStreams}
+      resetState={resetState}
+      setLocalStream={setLocalStream}
+      setTargetUserId={setTargetUserId}
       onPressAccept={onPressAccept}
       onPressReject={onPressReject}
-      isActiveCall={isActiveCall}
+      onLogout={onLogout}
     />
   );
 };

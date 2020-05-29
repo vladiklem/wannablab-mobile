@@ -1,6 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 class StorageService {
+  removeItem = async key => {
+    await AsyncStorage.removeItem(key);
+  }
+
   getItem = async key => {
     const item = await AsyncStorage.getItem(key);
 
