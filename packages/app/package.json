@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "cd ios && pod install",
     "android": "cd android && ./gradlew clean && cd .. && react-native run-android",
     "ios": "react-native run-ios",
     "build-android": "cd android && ./gradlew assembleRelease",
@@ -43,8 +44,7 @@
     "eslint-plugin-react-hooks": "2.5.0",
     "eslint-plugin-react-native": "3.8.1",
     "jest": "24.9.0",
-    "metro-react-native-babel-preset": "0.58.0",
-    "react-test-renderer": "16.11.0"
+    "metro-react-native-babel-preset": "0.58.0"
   },
   "jest": {
     "preset": "react-native"
