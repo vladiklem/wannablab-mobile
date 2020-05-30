@@ -1,5 +1,4 @@
 import { GET_INTERESTS_SUCCESS } from './constants';
-import { requestStatus } from '../../constants';
 import { createReducer } from '../../utils/store';
 
 const initialState = {

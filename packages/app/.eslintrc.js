@@ -9,15 +9,19 @@ module.exports = {
   globals: {
     __DEV__: true,
     global: true,
+    Alert: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', 'react-native', 'jest'],
+  plugins: ['react', 'react-hooks', 'prettier', 'react-native', 'jest'],
   rules: {
     'no-underscore-dangle': ['error', { allow: ['_session'] }],
-    'no-unused-vars': 'off',
+    'no-unused-vars': 'warn',
+    'no-unused-expressions': 'warn',
+    'no-use-before-define': 'off',
+    'spaced-comment': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'max-len': [
@@ -35,14 +39,8 @@ module.exports = {
     ],
     'computed-property-spacing': ['error', 'never'],
     'implicit-arrow-linebreak': 'off',
+    'no-console': 'warn',
     'function-paren-newline': 'off',
-    'no-use-before-define': [
-      'error',
-      {
-        functions: false,
-        classes: false,
-      },
-    ],
     'no-nested-ternary': [0],
     'no-confusing-arrow': [0],
     'no-restricted-syntax': [
@@ -94,27 +92,7 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'if' },
       { blankLine: 'always', prev: '*', next: 'for' },
     ],
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: {
-          minProperties: 4,
-          multiline: true,
-          consistent: true,
-        },
-        ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
-        ImportDeclaration: {
-          minProperties: 4,
-          multiline: true,
-          consistent: true,
-        },
-        ExportDeclaration: {
-          minProperties: 4,
-          multiline: true,
-          consistent: true,
-        },
-      },
-    ],
+    'object-curly-newline': 'off',
 
     // React
     'react/jsx-filename-extension': [

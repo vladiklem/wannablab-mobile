@@ -11,11 +11,11 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.$white,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   label: {
     fontSize: 16,
     color: colors.$white,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

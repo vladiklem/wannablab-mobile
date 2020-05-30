@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Alert, StyleSheet } from 'react-native';
+import { View, Alert, StyleSheet } from 'react-native';
 
 import Button from '../Button/Button';
 import { CallService } from '../../services';
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-  }
+  },
 });
 
 const Toolbar = props => {
@@ -33,12 +33,12 @@ const Toolbar = props => {
     } else {
       Alert.alert('Enter opponent id');
     }
-  }
+  };
 
   const stopCall = () => {
     CallService.stopCall();
     resetState();
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -48,6 +48,6 @@ const Toolbar = props => {
       />
     </View>
   );
-}
+};
 
 export default Toolbar;

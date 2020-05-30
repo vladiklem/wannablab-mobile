@@ -28,14 +28,12 @@ export default class CallService {
     );
     this.setMediaDevices();
 
-    return this._session
-      .getUserMedia(this.MEDIA_OPTIONS)
-      .then(localStream => {
-        this._session.call({});
+    return this._session.getUserMedia(this.MEDIA_OPTIONS).then(localStream => {
+      this._session.call({});
 
-        return localStream;
-      });
-  }
+      return localStream;
+    });
+  };
 
   stopCall = () => {
     if (this._session) {
