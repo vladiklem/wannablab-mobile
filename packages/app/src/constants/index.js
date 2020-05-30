@@ -2,18 +2,18 @@ export const requestStatus = {
   IDLE: 'IDLE',
   SUCCESS: 'SUCCESS',
   FAILURE: 'FAILURE',
-  LOADING: 'LOADING'
+  LOADING: 'LOADING',
 };
 
 export const initialRequest = {
   status: requestStatus.IDLE,
-  error: ''
+  error: '',
 };
 
 export const userKeys = {
   APP_TOKEN: 'APP_TOKEN',
   UPDATED_AT: 'UPDATED_AT',
-  PROFILE: 'PROFILE'
+  PROFILE: 'PROFILE',
 };
 
 export const UNKNOWN = 'unknown';

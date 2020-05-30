@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,16 +25,20 @@ const Login = props => {
   ]);
 
   const isFormValid = useCallback(() => {
-    password.trim().length < 8 && Alert.alert('password min length is 8 characters');
+    password.trim().length < 8 &&
+      Alert.alert('password min length is 8 characters');
 
     return password.trim().length >= 8;
   }, [password]);
 
-  const finishAuth = useCallback((action, ...args) => {
-    dispatch(action(...args));
-    setPassword('');
-    setUsername('');
-  }, [setPassword, setUsername]);
+  const finishAuth = useCallback(
+    (action, ...args) => {
+      dispatch(action(...args));
+      setPassword('');
+      setUsername('');
+    },
+    [setPassword, setUsername]
+  );
 
   const onLogin = useCallback(() => {
     isFormValid() && finishAuth(login, null, username, password);
@@ -45,18 +50,16 @@ const Login = props => {
 
   const onFBLogin = (error, result) => {
     if (error) {
-      console.log("login has error: " + result.error);
+      console.log('login has error: ', result.error);
     } else if (result.isCancelled) {
-      console.log("login is cancelled.");
+      console.log('login is cancelled.');
     } else {
-      AccessToken.getCurrentAccessToken().then(
-        (data) => {
-          const { accessToken } = data;
-          dispatch(login(FACEBOOK, accessToken, null));
-        }
-      )
-    } 
-  }
+      AccessToken.getCurrentAccessToken().then(data => {
+        const { accessToken } = data;
+        dispatch(login(FACEBOOK, accessToken, null));
+      });
+    }
+  };
 
   useEffect(() => {
     const { status } = signupRequest;
@@ -67,9 +70,11 @@ const Login = props => {
   useEffect(() => {
     const { status, error } = loginRequest;
 
-    isSuccess(status) && openScene(HOME);
+    isSuccess(status) && openScene(INTERESTS); //TODO: should be changed
+
+    // isSuccess(status) && openScene(HOME);
     isFailure(status) && Alert.alert(error);
-  }, [loginRequest])
+  }, [loginRequest]);
 
   return (
     <LoginView

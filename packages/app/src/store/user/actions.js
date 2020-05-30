@@ -79,8 +79,8 @@ export const logoutSuccess = () => ({
 export const logoutFailure = error => ({
   type: LOGOUT_FAILURE,
   payload: {
-    error
-  }
+    error,
+  },
 });
 
 export const signUp = (login, password) => ({

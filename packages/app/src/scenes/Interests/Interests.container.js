@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInterests } from '../../store/interests/actions';

@@ -1,13 +1,8 @@
+/* eslint-disable camelcase */
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { StorageService, AuthService } from '../../services';
 
-import {
-  INIT_USER,
-  UPDATE_USER,
-  LOGIN,
-  LOGOUT,
-  SIGN_UP
-} from './constants';
+import { INIT_USER, UPDATE_USER, LOGIN, LOGOUT, SIGN_UP } from './constants';
 import { userKeys, UNKNOWN } from '../../constants';
 import {
   initSuccess,
@@ -28,14 +23,12 @@ const isValid = date => (Date.now() - Date.parse(date)) / 60000 < 120;
 function* getAppToken() {
   try {
     const appToken = yield call(StorageService.getItem, userKeys.APP_TOKEN);
-    const updatedAt = yield call(
-      StorageService.getItem,
-      userKeys.UPDATED_AT
-    );
+    const updatedAt = yield call(StorageService.getItem, userKeys.UPDATED_AT);
+
     if (!appToken || !updatedAt || !isValid(updatedAt)) {
       const {
         token,
-        updated_at: updatedAt
+        updated_at: updatedAt,
       } = yield AuthService.createAppSession();
       yield call(StorageService.setItem, userKeys.UPDATED_AT, updatedAt);
       yield call(StorageService.setItem, userKeys.APP_TOKEN, token);
@@ -59,49 +52,47 @@ function* initUser() {
     yield put(initSuccess(appToken, profile || initialProfile));
   } catch (e) {
     console.error(e);
-    Alert.alert('some fcking error was occured, please try again later');
+    Alert.alert('some error was occured, please try again later');
   }
-};
+}
 
 function* loginFacebook({ provider, login: token }) {
   const credentials = {
     provider,
-    keys: { token }
+    keys: { token },
   };
 
-  const session = yield AuthService
-    .login(credentials)
-    .catch(e => console.error(e));
-  
+  const session = yield AuthService.login(credentials).catch(e =>
+    console.error(e)
+  );
+
   return {
     id: session.user_id,
     userToken: session.token,
     fullName: UNKNOWN,
     login: UNKNOWN,
-    provider
+    provider,
   };
-};
+}
 
 function* loginEmailPass({ login, password }) {
   const credentials = {
     login,
-    password
+    password,
   };
-  
-  const { token, user } = yield AuthService
-    .login(credentials)
-    .catch(e => {
-      throw e
-    });
+
+  const { token, user } = yield AuthService.login(credentials).catch(e => {
+    throw e;
+  });
 
   return {
     id: user.id,
     userToken: token,
     login: user.login,
     fullName: UNKNOWN,
-    provider: null
+    provider: null,
   };
-};
+}
 
 function* loginUser({ payload }) {
   yield put(loginLoading());
@@ -115,7 +106,7 @@ function* loginUser({ payload }) {
   } catch (e) {
     yield put(loginFailure('this user not exists'));
   }
-};
+}
 
 function* logoutUser() {
   try {
@@ -126,7 +117,7 @@ function* logoutUser() {
   } catch (e) {
     yield put(logoutFailure(e));
   }
-};
+}
 
 function* signUpUser({ payload }) {
   try {
@@ -135,7 +126,7 @@ function* signUpUser({ payload }) {
     const { appToken: token } = yield select(state => state.user);
     console.log(token);
 
-    yield AuthService.signup({ login, password, keys: { token }});
+    yield AuthService.signup({ login, password, keys: { token } });
 
     const profile = yield loginEmailPass({ login, password });
     yield put(signUpSuccess(profile));
@@ -147,11 +138,11 @@ function* signUpUser({ payload }) {
 function* updateUser({ payload }) {
   try {
     console.log(payload.updatedProfile);
-    const { user: { full_name, user_tags } } = yield AuthService
-      .update(payload.updatedProfile)
-      .catch(e => {
-        console.error(e);
-      });
+    const {
+      user: { full_name, user_tags },
+    } = yield AuthService.update(payload.updatedProfile).catch(e => {
+      console.error(e);
+    });
 
     const updatedProfile = {
       fullName: full_name || UNKNOWN,

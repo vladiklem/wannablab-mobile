@@ -58,8 +58,8 @@ const handlers = {
     ...state,
     loginRequest: {
       status: requestStatus.FAILURE,
-      error: action.payload.error
-    }
+      error: action.payload.error,
+    },
   }),
   [LOGOUT_SUCCESS]: state => ({
     ...state,
@@ -68,15 +68,15 @@ const handlers = {
     signupRequest: initialRequest,
     logoutRequest: {
       status: requestStatus.SUCCESS,
-      error: ''
-    }
+      error: '',
+    },
   }),
   [LOGOUT_FAILURE]: (state, action) => ({
     ...state,
     logoutRequest: {
       status: requestStatus.FAILURE,
-      error: action.payload.error
-    }
+      error: action.payload.error,
+    },
   }),
   [SIGN_UP_LOADING]: state => ({
     ...state,

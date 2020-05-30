@@ -11,10 +11,10 @@ export default StyleSheet.create({
     borderRadius: 20,
     paddingLeft: 10,
     fontSize: 25,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   input: {
     fontSize: 16,
-    color: colors.$white
-  }
+    color: colors.$white,
+  },
 });

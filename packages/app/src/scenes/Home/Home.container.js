@@ -1,9 +1,10 @@
+/* eslint-disable import/no-cycle */
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ConnectyCube from 'react-native-connectycube';
 
 import HomeView from './Home.view';
-import { routeName as LOGIN } from '../../scenes/Login/Login.container'; 
+import { routeName as LOGIN } from '../Login/Login.container';
 import { logout } from '../../store/user/actions';
 import { CallService } from '../../services';
 import { isSuccess } from '../../utils/requests';
@@ -21,9 +22,12 @@ const Home = props => {
   const [localStream, setLocalStream] = useState({});
   const [_session, _setSession] = useState(null);
 
-  const openScene = useCallback(routeName => {
-    navigation.navigate(routeName);
-  }, [navigation]);
+  const openScene = useCallback(
+    routeName => {
+      navigation.navigate(routeName);
+    },
+    [navigation]
+  );
 
   useEffect(() => {
     profile.userToken && initListeners();
@@ -37,10 +41,13 @@ const Home = props => {
 
   const onLogout = () => dispatch(logout());
 
-  const showIncomingCall = useCallback(session => {
-    _setSession(session);
-    setIsIncomingCall(true);
-  }, [_setSession, setIsIncomingCall]);
+  const showIncomingCall = useCallback(
+    session => {
+      _setSession(session);
+      setIsIncomingCall(true);
+    },
+    [_setSession, setIsIncomingCall]
+  );
 
   const hideIncomingCall = useCallback(
     session => {

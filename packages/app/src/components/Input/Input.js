@@ -4,7 +4,6 @@ import { View, TextInput } from 'react-native';
 import styles from './Input.styles';
 import colors from '../../theme/colors';
 
-
 const Input = props => {
   const {
     value,
@@ -12,12 +11,15 @@ const Input = props => {
     placeholder = '',
     KeyboardType = 'default',
     containerStyle = {},
-    placeholderTextColor = colors.$white
+    placeholderTextColor = colors.$white,
   } = props;
 
-  const handleChangeText = useCallback(text => {
-    onChangeText(text);
-  }, [onChangeText]);
+  const handleChangeText = useCallback(
+    text => {
+      onChangeText(text);
+    },
+    [onChangeText]
+  );
 
   return (
     <View style={[styles.container, containerStyle]}>

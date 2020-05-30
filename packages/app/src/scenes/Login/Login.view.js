@@ -14,7 +14,7 @@ const LoginView = props => {
     setPassword,
     onLogin,
     onFBLogin,
-    onSignup
+    onSignup,
   } = props;
 
   return (
