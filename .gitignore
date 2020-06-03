@@ -70,4 +70,4 @@ buck-out/
 # Yarn
 **/yarn.lock
 
-**/package-lock.json
+# **/package-lock.json

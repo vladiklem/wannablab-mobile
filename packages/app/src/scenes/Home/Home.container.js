@@ -19,7 +19,7 @@ const Home = props => {
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
   const [remoteStreams, setRemoteStreams] = useState([]);
-  const [localStream, setLocalStream] = useState({});
+  const [localStream, setLocalStream] = useState(null);
   const [_session, _setSession] = useState(null);
 
   const openScene = useCallback(
@@ -185,7 +185,13 @@ const Home = props => {
     hideIncomingCall();
   });
 
-  const streams = [localStream, ...remoteStreams];
+  const localStreamItem = localStream
+    ? [{ userId: 'localStream', stream: localStream }]
+    : [];
+
+  console.info('localStreamItem: ', localStreamItem);
+
+  const streams = [...remoteStreams, ...localStreamItem];
 
   return (
     <HomeView

@@ -10,29 +10,42 @@ export default class CallService {
     this._session = session;
     this.setMediaDevices();
 
-    return this._session.getUserMedia(this.MEDIA_OPTIONS).then(stream => {
-      this._session.accept({});
+    return this._session
+      .getUserMedia(CallService.MEDIA_OPTIONS)
+      .then(stream => {
+        this._session.accept({});
 
-      return stream;
-    });
+        return stream;
+      });
   };
 
-  startCall = id => {
+  setMediaDevices = () =>
+    ConnectyCube.videochat.getMediaDevices().then(mediaDevices => {
+      this.mediaDevices = mediaDevices;
+    });
+
+  startCall = ids => {
     const type = ConnectyCube.videochat.CallType.VIDEO;
     const options = {};
 
-    this._session = ConnectyCube.videochat.createNewSession(
-      [id],
-      type,
-      options
-    );
+    this._session = ConnectyCube.videochat.createNewSession(ids, type, options);
     this.setMediaDevices();
 
-    return this._session.getUserMedia(this.MEDIA_OPTIONS).then(localStream => {
-      this._session.call({});
+    console.info('this.mediaDevices: ', this.mediaDevices);
 
-      return localStream;
-    });
+    console.info('MEDIA_OPTIONS: ', CallService.MEDIA_OPTIONS);
+    console.info('this._session: ', this._session);
+
+    return this._session
+      .getUserMedia(CallService.MEDIA_OPTIONS)
+      .then(localStream => {
+        console.info('localStream: ', localStream);
+
+        this._session.call({});
+
+        return localStream;
+      })
+      .catch(error => console.log(error));
   };
 
   stopCall = () => {
@@ -116,10 +129,5 @@ export default class CallService {
       } else {
         resolve();
       }
-    });
-
-  setMediaDevices = () =>
-    ConnectyCube.videochat.getMediaDevices().then(mediaDevices => {
-      this.mediaDevices = mediaDevices;
     });
 }

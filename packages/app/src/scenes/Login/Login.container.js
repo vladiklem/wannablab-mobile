@@ -63,17 +63,17 @@ const Login = props => {
 
   useEffect(() => {
     const { status } = signupRequest;
-
-    isSuccess(status) && openScene(INTERESTS);
+    isSuccess(status) && openScene(HOME);
+    // isSuccess(status) && openScene(INTERESTS);
   }, [signupRequest]);
 
   useEffect(() => {
     const { status, error } = loginRequest;
 
-    isSuccess(status) && openScene(INTERESTS); //TODO: should be changed
+    // isSuccess(status) && openScene(INTERESTS); //TODO: should be changed
 
-    // isSuccess(status) && openScene(HOME);
-    isFailure(status) && Alert.alert(error);
+    isSuccess(status) && openScene(HOME);
+    // isFailure(status) && Alert.alert(error);
   }, [loginRequest]);
 
   return (

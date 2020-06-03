@@ -15,13 +15,26 @@ export default class AuthService {
       ConnectyCube.users.update(userProfile).then(resolve).catch(reject);
     });
 
-  login = user =>
-    new Promise((resolve, reject) => {
-      ConnectyCube.createSession(user).then(resolve).catch(reject);
-    });
+  login = async loginUser => {
+    try {
+      console.info('user: ', loginUser);
+
+      const session = await ConnectyCube.createSession(loginUser);
+      console.info('session: ', session);
+
+      await ConnectyCube.chat.connect({
+        userId: session.user_id,
+        password: loginUser.password,
+      });
+
+      return session;
+    } catch (err) {
+      console.log('Error');
+    }
+  };
 
   signup = userProfile =>
-    new Promise((resolve, reject) => {
+    Promise((resolve, reject) => {
       ConnectyCube.users.signup(userProfile).then(resolve).catch(reject);
     });
 
