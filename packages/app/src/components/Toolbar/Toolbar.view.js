@@ -26,10 +26,11 @@ const Toolbar = props => {
     resetState,
   } = props;
 
-  const startCall = () => {
+  const startCall = async () => {
     if (opponentId) {
       initRemoteStreams([opponentId]);
-      CallService.startCall(+opponentId);
+      const stream = await CallService.startCall([+opponentId]);
+      setLocalStream(stream);
     } else {
       Alert.alert('Enter opponent id');
     }

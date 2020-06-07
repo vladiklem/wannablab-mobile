@@ -31,21 +31,14 @@ export default class CallService {
     this._session = ConnectyCube.videochat.createNewSession(ids, type, options);
     this.setMediaDevices();
 
-    console.info('this.mediaDevices: ', this.mediaDevices);
-
-    console.info('MEDIA_OPTIONS: ', CallService.MEDIA_OPTIONS);
-    console.info('this._session: ', this._session);
-
     return this._session
       .getUserMedia(CallService.MEDIA_OPTIONS)
       .then(localStream => {
-        console.info('localStream: ', localStream);
-
         this._session.call({});
 
         return localStream;
       })
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   };
 
   stopCall = () => {
