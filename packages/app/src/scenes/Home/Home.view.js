@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Input from '../../components/Input/Input';
@@ -41,6 +41,7 @@ const HomeView = props => {
       <Text>{`Your profile login: ${login}`}</Text>
       <Text>{`User interests: ${userInterests.toString()}`}</Text>
       <Text>Enter id of user that you want to call</Text>
+      <Image source={require('../../assets/images/back_cloud.png')} />
       <Input
         value={targetUserId}
         onChangeText={setTargetUserId}
