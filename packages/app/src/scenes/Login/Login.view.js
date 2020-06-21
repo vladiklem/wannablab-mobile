@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
+  ImageBackground,
+} from 'react-native';
+
+import colors from '../../theme/colors';
 
 import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
 import Input from '../../components/Input/Input';
@@ -18,23 +26,27 @@ const LoginView = props => {
   } = props;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <FBLoginButton onFBLogin={onFBLogin} />
-      <Input
-        placeholder="Enter your username..."
-        value={username}
-        onChangeText={setUsername}
-      />
-      <Input
-        placeholder="Enter your password..."
-        value={password}
-        onChangeText={setPassword}
-        containerStyle={styles.input}
-      />
-      <Button label="Login" onPress={onLogin} />
-      <Button label="Sign up" onPress={onSignup} />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Text style={styles.title}>hello, blaber</Text>
+        <FBLoginButton onFBLogin={onFBLogin} />
+        <Input
+          placeholder="email"
+          value={username}
+          onChangeText={setUsername}
+          placeholderTextColor={colors.$placeholder}
+        />
+        <Input
+          placeholder="password"
+          value={password}
+          onChangeText={setPassword}
+          containerStyle={styles.input}
+          placeholderTextColor={colors.$placeholder}
+        />
+        <Button label="Login" onPress={onLogin} />
+        <Button label="Sign up" onPress={onSignup} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

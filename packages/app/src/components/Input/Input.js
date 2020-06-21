@@ -26,6 +26,7 @@ const Input = props => {
       <TextInput
         style={styles.input}
         value={value}
+        autoCapitalize="none"
         placeholder={placeholder}
         keyboardType={KeyboardType}
         onChangeText={handleChangeText}

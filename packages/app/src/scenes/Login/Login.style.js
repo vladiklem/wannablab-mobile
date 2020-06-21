@@ -8,16 +8,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,
-    backgroundColor: colors.$lightPurple,
+    backgroundColor: colors.$white,
   },
   title: {
     marginBottom: 10,
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.$white,
+    color: colors.$text,
   },
   input: {
     marginTop: 20,
+    color: colors.$text,
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 });
 
