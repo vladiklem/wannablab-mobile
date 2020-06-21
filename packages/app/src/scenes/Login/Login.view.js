@@ -4,11 +4,10 @@ import {
   Text,
   TouchableWithoutFeedback,
   Keyboard,
-  ImageBackground,
+  Image,
 } from 'react-native';
 
 import colors from '../../theme/colors';
-
 import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
@@ -28,6 +27,7 @@ const LoginView = props => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
+        <Image source={require('../../assets/images/back_cloud.png')} />
         <Text style={styles.title}>hello, blaber</Text>
         <FBLoginButton onFBLogin={onFBLogin} />
         <Input

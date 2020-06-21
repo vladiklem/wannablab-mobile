@@ -20,11 +20,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: colors.$text,
   },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
 });
 
 export default styles;
