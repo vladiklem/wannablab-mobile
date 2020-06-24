@@ -24,6 +24,8 @@ module.exports = {
     'spaced-comment': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'comma-dangle': ['error', 'always-multiline'],
+    'react/jsx-closing-bracket-location': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'max-len': [
       'error',
       80,
