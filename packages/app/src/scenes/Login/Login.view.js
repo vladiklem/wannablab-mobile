@@ -6,6 +6,7 @@ import {
   Keyboard,
   Image,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import colors from '../../theme/colors';
 import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
@@ -31,36 +32,57 @@ const LoginView = props => {
           source={require('../../assets/images/front_cloud.png')}
           style={styles.topImage}
         />
+
         <Image
           source={require('../../assets/images/back_cloud.png')}
           style={styles.bottomImage}
         />
+
         <View style={styles.contentContainer}>
           <Text style={styles.title}>hello, blaber</Text>
+
           <Input
             placeholder="email"
             value={username}
             onChangeText={setUsername}
             containerStyle={styles.input}
             placeholderTextColor={colors.$placeholder}
+            autoCompleteType="off"
+            autoCorrect="false"
+            iconPath={require('../../assets/icons/lock.png')}
           />
+
           <Input
             placeholder="password"
             value={password}
             onChangeText={setPassword}
             containerStyle={styles.input}
             placeholderTextColor={colors.$placeholder}
+            autoCompleteType="off"
+            autoCorrect="false"
+            iconPath={require('../../assets/icons/email.png')}
           />
-          <Text style={styles.link}>forgot password?</Text>
-          <View style={styles.buttonWrapper}>
+
+          <Text style={[styles.linkSmall, styles.linkDistance]}>
+            forgot password?
+          </Text>
+
+          <LinearGradient
+            start={{ x: 1, y: 0 }}
+            end={{ x: 0, y: 0 }}
+            colors={['#2DCE89', '#48C686', '#049A8F']}
+            style={styles.buttonWrapper}>
             <Button label="Login" onPress={onLogin} />
-          </View>
+          </LinearGradient>
+
           <View style={styles.buttonWrapper}>
             <FBLoginButton onFBLogin={onFBLogin} />
           </View>
-          <View>
-            <Text>not a member?</Text>
-            <Text style={styles.link}>join now</Text>
+
+          <View style={styles.textWrapper}>
+            <Text style={styles.text}>not a member?</Text>
+
+            <Text style={styles.linkMedium}>join now</Text>
           </View>
         </View>
       </View>

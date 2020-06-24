@@ -40,15 +40,35 @@ const styles = StyleSheet.create({
     zIndex: 0,
     resizeMode: 'cover',
   },
-  link: {
-    marginVertical: 30,
+  linkSmall: {
     fontSize: 14,
     color: colors.$text,
     textDecorationLine: 'underline',
   },
+  linkMedium: {
+    fontSize: 16,
+    color: colors.$text,
+    textDecorationLine: 'underline',
+  },
+  linkDistance: {
+    marginTop: 30,
+    marginBottom: 40,
+  },
   buttonWrapper: {
     flex: 1,
     width: 300,
+    borderRadius: 50,
+    marginVertical: 15,
+  },
+  textWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  text: {
+    marginRight: 5,
+    fontSize: 16,
+    color: colors.$text,
   },
 });
 
