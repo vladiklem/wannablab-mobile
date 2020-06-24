@@ -12,7 +12,14 @@ export default StyleSheet.create({
     fontSize: 25,
     justifyContent: 'center',
   },
+  inputGroup: {
+    flexDirection: 'row',
+  },
+  icon: {
+    marginRight: 12,
+  },
   input: {
     fontSize: 16,
+    color: colors.$text,
   },
 });
