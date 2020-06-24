@@ -48,17 +48,8 @@ const Login = props => {
     isFormValid() && finishAuth(signUp, username, password);
   }, [username, password]);
 
-  const onFBLogin = (error, result) => {
-    if (error) {
-      console.log('login has error: ', result.error);
-    } else if (result.isCancelled) {
-      console.log('login is cancelled.');
-    } else {
-      AccessToken.getCurrentAccessToken().then(data => {
-        const { accessToken } = data;
-        dispatch(login(FACEBOOK, accessToken, null));
-      });
-    }
+  const onFBLogin = accessToken => {
+    dispatch(login(FACEBOOK, accessToken, null));
   };
 
   useEffect(() => {

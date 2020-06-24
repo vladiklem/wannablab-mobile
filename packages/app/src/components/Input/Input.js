@@ -16,7 +16,6 @@ const Input = props => {
     ...rest
   } = props;
 
-  console.info('rest: ', rest);
   const handleChangeText = useCallback(
     text => {
       onChangeText(text);

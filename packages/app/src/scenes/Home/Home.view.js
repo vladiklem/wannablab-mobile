@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';
 import Toolbar from '../../components/Toolbar/Toolbar.view';
 import styles from './Home.styles';
 
@@ -27,34 +26,16 @@ const HomeView = props => {
 
   return (
     <SafeAreaView style={styles.f1}>
-      {provider ? (
-        <FBLoginButton
-          onFBLogout={onLogout}
-        />
-      ) : (
-        <Button
-          label="Logout"
-          onPress={onLogout}
-        />
-      )}
+      <Button label="Logout" onPress={onLogout} />
       <Text>{`Your profile id: ${id}`}</Text>
       <Text>{`Your profile login: ${login}`}</Text>
       <Text>{`User interests: ${userInterests.toString()}`}</Text>
       <Text>Enter id of user that you want to call</Text>
-      <Input
-        value={targetUserId}
-        onChangeText={setTargetUserId}
-      />
+      <Input value={targetUserId} onChangeText={setTargetUserId} />
       {isIncomingCall && (
         <>
-          <Button
-            label="Accept Incoming Call"
-            onPress={onPressAccept}
-          />
-          <Button
-            label="Reject Incoming Call"
-            onPress={onPressReject}
-          />
+          <Button label="Accept Incoming Call" onPress={onPressAccept} />
+          <Button label="Reject Incoming Call" onPress={onPressReject} />
         </>
       )}
       <Toolbar
