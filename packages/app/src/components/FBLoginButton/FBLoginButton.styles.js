@@ -3,11 +3,20 @@ import { StyleSheet } from 'react-native';
 import colors from '../../theme/colors';
 
 export default StyleSheet.create({
-  buttonWrapper: {
-    flex: 1,
-    width: 300,
+  container: {
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: colors.$facebook,
   },
-  button: {
-    width: 300,
+  contentWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingRight: 50,
+  },
+  label: {
+    color: colors.$facebook,
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
