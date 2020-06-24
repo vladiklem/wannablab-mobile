@@ -27,24 +27,42 @@ const LoginView = props => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Image source={require('../../assets/images/back_cloud.png')} />
-        <Text style={styles.title}>hello, blaber</Text>
-        <FBLoginButton onFBLogin={onFBLogin} />
-        <Input
-          placeholder="email"
-          value={username}
-          onChangeText={setUsername}
-          placeholderTextColor={colors.$placeholder}
+        <Image
+          source={require('../../assets/images/front_cloud.png')}
+          style={styles.topImage}
         />
-        <Input
-          placeholder="password"
-          value={password}
-          onChangeText={setPassword}
-          containerStyle={styles.input}
-          placeholderTextColor={colors.$placeholder}
+        <Image
+          source={require('../../assets/images/back_cloud.png')}
+          style={styles.bottomImage}
         />
-        <Button label="Login" onPress={onLogin} />
-        <Button label="Sign up" onPress={onSignup} />
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>hello, blaber</Text>
+          <Input
+            placeholder="email"
+            value={username}
+            onChangeText={setUsername}
+            containerStyle={styles.input}
+            placeholderTextColor={colors.$placeholder}
+          />
+          <Input
+            placeholder="password"
+            value={password}
+            onChangeText={setPassword}
+            containerStyle={styles.input}
+            placeholderTextColor={colors.$placeholder}
+          />
+          <Text style={styles.link}>forgot password?</Text>
+          <View style={styles.buttonWrapper}>
+            <Button label="Login" onPress={onLogin} />
+          </View>
+          <View style={styles.buttonWrapper}>
+            <FBLoginButton onFBLogin={onFBLogin} />
+          </View>
+          <View>
+            <Text>not a member?</Text>
+            <Text style={styles.link}>join now</Text>
+          </View>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );

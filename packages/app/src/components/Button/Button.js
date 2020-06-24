@@ -4,19 +4,11 @@ import { TouchableOpacity, Text } from 'react-native';
 import styles from './Button.styles';
 
 const Button = props => {
-  const {
-    label,
-    onPress,
-  } = props;
+  const { label, onPress } = props;
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={onPress}
-    >
-      <Text style={styles.label}>
-        {label}
-      </Text>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Text style={styles.label}>{label.toUpperCase()}</Text>
     </TouchableOpacity>
   );
 };
