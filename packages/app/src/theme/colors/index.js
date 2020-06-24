@@ -4,4 +4,5 @@ export default {
   $placeholder: '#8898AA',
   $white: '#ffffff',
   $lightPurple: '#CBBAED',
+  $facebook: '#0880DE',
 };
