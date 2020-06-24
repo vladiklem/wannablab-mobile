@@ -2,13 +2,17 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { AccessToken } from 'react-native-fbsdk';
 
 import LoginView from './Login.view';
 import { routeName as HOME } from '../Home/Home.container';
 import { routeName as INTERESTS } from '../Interests/Interests.container';
 import { login, signUp } from '../../store/user/actions';
 import { isSuccess, isFailure } from '../../utils/requests';
+import {
+  isValidEmailCheck,
+  isValidPasswordCheck,
+} from '../../utils/validation';
+
 import { FACEBOOK } from '../../constants';
 
 export const routeName = 'LOGIN';
@@ -19,17 +23,33 @@ const Login = props => {
   const { loginRequest, signupRequest } = useSelector(state => state.user);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isValidUsername, setIsValidUsername] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(false);
 
   const openScene = useCallback(routeName => navigation.navigate(routeName), [
     navigation,
   ]);
 
   const isFormValid = useCallback(() => {
-    password.trim().length < 8 &&
-      Alert.alert('password min length is 8 characters');
+    if (!isValidPasswordCheck(password)) {
+      setErrorMessage('invalid password');
 
-    return password.trim().length >= 8;
-  }, [password]);
+      setIsValidPassword(true);
+      setPassword('');
+    } else {
+      setIsValidPassword(false);
+    }
+
+    if (!isValidEmailCheck(username)) {
+      setErrorMessage('invalid email');
+
+      setIsValidUsername(true);
+      setUsername('');
+    } else {
+      setIsValidUsername(false);
+    }
+  }, [password, username, isValidUsername, isValidPassword]);
 
   const finishAuth = useCallback(
     (action, ...args) => {
@@ -76,6 +96,9 @@ const Login = props => {
       onLogin={onLogin}
       onFBLogin={onFBLogin}
       onSignup={onSignup}
+      errorMessage={errorMessage}
+      isValidUsername={isValidUsername}
+      isValidPassword={isValidPassword}
     />
   );
 };

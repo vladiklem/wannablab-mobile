@@ -23,7 +23,20 @@ const LoginView = props => {
     onLogin,
     onFBLogin,
     onSignup,
+    errorMessage,
+    isValidUsername,
+    isValidPassword,
   } = props;
+
+  const passwordIconPath = () =>
+    isValidPassword
+      ? require('../../assets/icons/lock.png')
+      : require('../../assets/icons/lock-error.png');
+
+  const emailIconPath = () =>
+    isValidUsername
+      ? require('../../assets/icons/email.png')
+      : require('../../assets/icons/email-error.png');
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -39,7 +52,11 @@ const LoginView = props => {
         />
 
         <View style={styles.contentContainer}>
-          <Text style={styles.title}>hello, blaber</Text>
+          {errorMessage ? (
+            <Text style={styles.titleError}>{errorMessage}</Text>
+          ) : (
+            <Text style={styles.title}>hello, blaber</Text>
+          )}
 
           <Input
             placeholder="email"
@@ -49,7 +66,7 @@ const LoginView = props => {
             placeholderTextColor={colors.$placeholder}
             autoCompleteType="off"
             autoCorrect="false"
-            iconPath={require('../../assets/icons/lock.png')}
+            iconPath={passwordIconPath()}
           />
 
           <Input
@@ -60,7 +77,8 @@ const LoginView = props => {
             placeholderTextColor={colors.$placeholder}
             autoCompleteType="off"
             autoCorrect="false"
-            iconPath={require('../../assets/icons/email.png')}
+            secureTextEntry="true"
+            iconPath={emailIconPath()}
           />
 
           <Text style={[styles.linkSmall, styles.linkDistance]}>

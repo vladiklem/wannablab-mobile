@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.$text,
   },
+  titleError: {
+    marginBottom: 10,
+    fontSize: 18,
+    color: colors.$error,
+  },
   input: {
     width: 300,
     marginTop: 20,

@@ -11,6 +11,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     fontSize: 25,
     justifyContent: 'center',
+    overflow: 'hidden',
   },
   inputGroup: {
     flexDirection: 'row',
@@ -19,6 +20,7 @@ export default StyleSheet.create({
     marginRight: 12,
   },
   input: {
+    width: '80%',
     fontSize: 16,
     color: colors.$text,
   },
