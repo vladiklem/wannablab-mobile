@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: colors.$text,
   },
-  topImage: {
+  bottomImage: {
     position: 'absolute',
     top: 80,
     left: 0,
     zIndex: 1,
     resizeMode: 'cover',
   },
-  bottomImage: {
+  topImage: {
     position: 'absolute',
     top: 10,
     left: 0,

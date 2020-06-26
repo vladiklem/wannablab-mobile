@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   TouchableWithoutFeedback,
   Keyboard,
   Image,
+  Animated,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -28,18 +29,46 @@ const LoginView = props => {
     isValidPassword,
   } = props;
 
+  const bottomCloud = useState(new Animated.Value(0))[0];
+  const topCloud = useState(new Animated.Value(0))[0];
+
+  function moveBottomCloud() {
+    Animated.timing(bottomCloud, {
+      toValue: 400,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  function moveTopCloud() {
+    Animated.timing(topCloud, {
+      toValue: 50,
+      delay: 1000,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  useEffect(() => {
+    moveTopCloud();
+    moveBottomCloud();
+  }, []);
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Image
-          source={require('../../assets/images/front_cloud.png')}
-          style={styles.topImage}
-        />
+        <Animated.View
+          style={[
+            styles.bottomImage,
+            { transform: [{ translateY: bottomCloud }] },
+          ]}>
+          <Image source={require('../../assets/images/front_cloud.png')} />
+        </Animated.View>
 
-        <Image
-          source={require('../../assets/images/back_cloud.png')}
-          style={styles.bottomImage}
-        />
+        <Animated.View
+          style={[styles.topImage, { transform: [{ translateY: topCloud }] }]}>
+          <Image source={require('../../assets/images/back_cloud.png')} />
+        </Animated.View>
 
         <View style={styles.contentContainer}>
           {errorMessage ? (
