@@ -28,16 +28,6 @@ const LoginView = props => {
     isValidPassword,
   } = props;
 
-  const passwordIconPath = () =>
-    isValidPassword
-      ? require('../../assets/icons/lock.png')
-      : require('../../assets/icons/lock-error.png');
-
-  const emailIconPath = () =>
-    isValidUsername
-      ? require('../../assets/icons/email.png')
-      : require('../../assets/icons/email-error.png');
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -66,7 +56,11 @@ const LoginView = props => {
             placeholderTextColor={colors.$placeholder}
             autoCompleteType="off"
             autoCorrect="false"
-            iconPath={passwordIconPath()}
+            iconPath={
+              isValidUsername
+                ? require('../../assets/icons/email.png')
+                : require('../../assets/icons/email-error.png')
+            }
           />
 
           <Input
@@ -78,7 +72,11 @@ const LoginView = props => {
             autoCompleteType="off"
             autoCorrect="false"
             secureTextEntry="true"
-            iconPath={emailIconPath()}
+            iconPath={
+              isValidPassword
+                ? require('../../assets/icons/lock.png')
+                : require('../../assets/icons/lock-error.png')
+            }
           />
 
           <Text style={[styles.linkSmall, styles.linkDistance]}>

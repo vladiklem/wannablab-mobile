@@ -24,8 +24,8 @@ const Login = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isValidUsername, setIsValidUsername] = useState(false);
-  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isValidUsername, setIsValidUsername] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
 
   const openScene = useCallback(routeName => navigation.navigate(routeName), [
     navigation,
@@ -35,19 +35,19 @@ const Login = props => {
     if (!isValidPasswordCheck(password)) {
       setErrorMessage('invalid password');
 
-      setIsValidPassword(true);
+      setIsValidPassword(false);
       setPassword('');
     } else {
-      setIsValidPassword(false);
+      setIsValidPassword(true);
     }
 
     if (!isValidEmailCheck(username)) {
       setErrorMessage('invalid email');
 
-      setIsValidUsername(true);
+      setIsValidUsername(false);
       setUsername('');
     } else {
-      setIsValidUsername(false);
+      setIsValidUsername(true);
     }
   }, [password, username, isValidUsername, isValidPassword]);
 
