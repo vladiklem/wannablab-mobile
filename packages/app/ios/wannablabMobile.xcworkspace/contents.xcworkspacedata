@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../assets/back_cloud.png">
+   </FileRef>
+   <FileRef
+      location = "group:../assets/front_cloud.png">
+   </FileRef>
+   <FileRef
       location = "group:wannablabMobile.xcodeproj">
    </FileRef>
    <FileRef

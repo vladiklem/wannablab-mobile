@@ -4,17 +4,19 @@ import colors from '../../theme/colors';
 
 export default StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
-    height: 48,
     borderRadius: 50,
-    borderWidth: 2,
-    borderColor: colors.$white,
-    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.$facebook,
+  },
+  contentWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingRight: 50,
   },
   label: {
+    color: colors.$facebook,
     fontSize: 14,
-    color: colors.$white,
     fontWeight: 'bold',
   },
 });
