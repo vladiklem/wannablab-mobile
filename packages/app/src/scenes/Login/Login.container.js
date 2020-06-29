@@ -31,25 +31,25 @@ const Login = props => {
     navigation,
   ]);
 
+  const inValidPasswordAction = () => {
+    setErrorMessage('invalid password');
+    setIsValidPassword(false);
+    setPassword('');
+
+    return false;
+  };
+
+  const validPasswordAction = () => {
+    setIsValidPassword(true);
+
+    return true;
+  };
+
   const isFormValid = useCallback(() => {
-    if (!isValidPasswordCheck(password)) {
-      setErrorMessage('invalid password');
-
-      setIsValidPassword(false);
-      setPassword('');
-    } else {
-      setIsValidPassword(true);
-    }
-
-    if (!isValidEmailCheck(username)) {
-      setErrorMessage('invalid email');
-
-      setIsValidUsername(false);
-      setUsername('');
-    } else {
-      setIsValidUsername(true);
-    }
-  }, [password, username, isValidUsername, isValidPassword]);
+    return isValidPasswordCheck(password)
+      ? validPasswordAction()
+      : inValidPasswordAction();
+  }, [password, isValidPassword]);
 
   const finishAuth = useCallback(
     (action, ...args) => {

@@ -6,6 +6,7 @@ import {
   Keyboard,
   Image,
   Animated,
+  Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -65,8 +66,7 @@ const LoginView = props => {
           <Image source={require('../../assets/images/front_cloud.png')} />
         </Animated.View>
 
-        <Animated.View
-          style={[styles.topImage, { transform: [{ translateY: topCloud }] }]}>
+        <Animated.View style={styles.topImage}>
           <Image source={require('../../assets/images/back_cloud.png')} />
         </Animated.View>
 
@@ -84,7 +84,8 @@ const LoginView = props => {
             containerStyle={styles.input}
             placeholderTextColor={colors.$placeholder}
             autoCompleteType="off"
-            autoCorrect="false"
+            autoCorrect={false}
+            keyboardType="email-address"
             iconPath={
               isValidUsername
                 ? require('../../assets/icons/email.png')
@@ -99,8 +100,7 @@ const LoginView = props => {
             containerStyle={styles.input}
             placeholderTextColor={colors.$placeholder}
             autoCompleteType="off"
-            autoCorrect="false"
-            secureTextEntry="true"
+            secureTextEntry={true}
             iconPath={
               isValidPassword
                 ? require('../../assets/icons/lock.png')

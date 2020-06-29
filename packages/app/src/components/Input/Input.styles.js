@@ -15,6 +15,7 @@ export default StyleSheet.create({
   },
   inputGroup: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     marginRight: 12,
