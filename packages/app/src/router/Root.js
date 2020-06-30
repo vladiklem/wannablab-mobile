@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Header from '../components/Header/Header';
+
 import Login, { routeName as LOGIN } from '../scenes/Login/Login.container';
+import EventList, {
+  routeName as EVENTLIST,
+} from '../scenes/EventList/EventList.container';
 import Interests, {
   routeName as INTERESTS,
 } from '../scenes/Interests/Interests.container';
@@ -21,6 +26,14 @@ const Root = () => {
 
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name={EVENTLIST}
+        component={EventList}
+        options={{
+          headerStyle: { height: 115 },
+          headerTitle: () => <Header />,
+        }}
+      />
       <Stack.Screen
         name={LOGIN}
         component={Login}
