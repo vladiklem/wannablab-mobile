@@ -8,6 +8,7 @@
     "ios": "react-native run-ios",
     "build-android": "cd android && ./gradlew assembleRelease",
     "start": "react-native start",
+    "clean": "git clean -fdx",
     "test": "jest",
     "lint": "eslint ."
   },
