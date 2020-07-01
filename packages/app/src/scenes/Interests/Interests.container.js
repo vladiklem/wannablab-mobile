@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInterests } from '../../store/interests/actions';
 import { updateUser } from '../../store/user/actions';
-import { routeName as HOME } from '../Home/Home.container';
+import { routeName as EVENTLIST } from '../EventList/EventList.container';
 
 import InterestsView from './Interests.view';
 
@@ -23,6 +23,7 @@ const Interests = ({ navigation }) => {
   }, [interests]);
 
   const openHome = () => navigation.navigate(HOME);
+  const openEventList = () => navigation.navigate(EVENTLIST);
 
   const onSave = useCallback(() => {
     const userInterestsActiveNames = userInterests
@@ -35,7 +36,8 @@ const Interests = ({ navigation }) => {
 
     dispatch(updateUser(updatedUserProfile));
 
-    openHome();
+    // openHome();
+    openEventList();
   }, [userInterests]);
 
   const onSelect = useCallback(

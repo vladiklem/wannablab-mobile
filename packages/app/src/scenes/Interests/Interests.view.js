@@ -1,8 +1,8 @@
 import React from 'react';
-import { SafeAreaView, Text, FlatList } from 'react-native';
+import { SafeAreaView, Text, FlatList, View } from 'react-native';
 import Button from '../../components/Button/Button';
 import Item from './components/InterestItem/InterestItem';
-import styles from './Interests.style';
+import styles from './Interests.styles';
 
 const InterestsView = ({ userInterests, onSelect, onSave }) => (
   <SafeAreaView style={styles.container}>
@@ -19,7 +19,9 @@ const InterestsView = ({ userInterests, onSelect, onSave }) => (
       )}
       keyExtractor={item => item.id}
     />
-    <Button label="Save" onPress={onSave} />
+    <View style={{ height: 48 }}>
+      <Button label="Save" onPress={onSave} />
+    </View>
   </SafeAreaView>
 );
 
