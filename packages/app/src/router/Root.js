@@ -27,14 +27,6 @@ const Root = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={EVENTLIST}
-        component={EventList}
-        options={{
-          headerStyle: { height: 115 },
-          headerTitle: () => <Header />,
-        }}
-      />
-      <Stack.Screen
         name={LOGIN}
         component={Login}
         options={{ headerShown: false }}
@@ -45,10 +37,19 @@ const Root = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name={EVENTLIST}
+        component={EventList}
+        options={{
+          headerStyle: { height: 115 },
+          headerLeft: null,
+          headerTitle: () => <Header />,
+        }}
+      />
+      {/*<Stack.Screen
         name={HOME}
         component={Home}
         options={{ headerShown: false }}
-      />
+      />*/}
     </Stack.Navigator>
   );
 };
