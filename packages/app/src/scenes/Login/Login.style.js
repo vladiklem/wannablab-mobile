@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     flex: 1,
     width: 300,
+    height: 48,
     borderRadius: 50,
     marginVertical: 15,
   },
