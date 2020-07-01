@@ -4,8 +4,7 @@ import colors from '../../theme/colors';
 
 export default StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
-    height: 48,
+    height: '100%',
     borderRadius: 50,
     borderWidth: 2,
     borderColor: colors.$white,
