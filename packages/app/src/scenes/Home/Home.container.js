@@ -15,7 +15,7 @@ const Home = props => {
   const { navigation } = props;
   const dispatch = useDispatch();
   const { profile, logoutRequest } = useSelector(state => state.user);
-  const [targetUserId, setTargetUserId] = useState('1417921');
+  const [opponentId, setOpponentId] = useState('1417921');
   const [isIncomingCall, setIsIncomingCall] = useState(false);
   const [isActiveCall, setIsActiveCall] = useState(false);
   const [remoteStreams, setRemoteStreams] = useState([]);
@@ -185,13 +185,21 @@ const Home = props => {
     hideIncomingCall();
   });
 
-  const localStreamItem = localStream
-    ? [{ userId: 'localStream', stream: localStream }]
-    : [];
+  const startCall = async () => {
+    initRemoteStreams([opponentId]);
+    const stream = await CallService.startCall([+opponentId]);
+    setLocalStream(stream);
+  };
 
-  console.info('localStreamItem: ', localStreamItem);
+  const stopCall = () => {
+    CallService.stopCall();
+    resetState();
+  };
 
-  const streams = [...remoteStreams, ...localStreamItem];
+  const streams = [
+    ...remoteStreams,
+    !!localStream && { userId: profile.id, stream: localStream },
+  ];
 
   return (
     <HomeView
@@ -199,14 +207,13 @@ const Home = props => {
       login={profile.login}
       provider={profile.provider}
       userInterests={profile.interests || ''}
-      targetUserId={targetUserId}
+      opponentId={opponentId}
       streams={streams}
       isActiveCall={isActiveCall}
       isIncomingCall={isIncomingCall}
-      initRemoteStreams={initRemoteStreams}
-      resetState={resetState}
-      setLocalStream={setLocalStream}
-      setTargetUserId={setTargetUserId}
+      startCall={startCall}
+      stopCall={stopCall}
+      setOpponentId={setOpponentId}
       onPressAccept={onPressAccept}
       onPressReject={onPressReject}
       onLogout={onLogout}

@@ -19,27 +19,11 @@ const styles = StyleSheet.create({
 
 const Toolbar = props => {
   const {
-    opponentId,
     isActiveCall,
-    initRemoteStreams,
-    setLocalStream,
-    resetState,
+    startCall,
+    stopCall,
+
   } = props;
-
-  const startCall = async () => {
-    if (opponentId) {
-      initRemoteStreams([opponentId]);
-      const stream = await CallService.startCall([+opponentId]);
-      setLocalStream(stream);
-    } else {
-      Alert.alert('Enter opponent id');
-    }
-  };
-
-  const stopCall = () => {
-    CallService.stopCall();
-    resetState();
-  };
 
   return (
     <View style={styles.container}>
