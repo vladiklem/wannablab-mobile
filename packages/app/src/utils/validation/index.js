@@ -11,3 +11,9 @@ function validateEmail(email) {
 export const isValidEmailCheck = email => validateEmail(email);
 
 export const isValidPasswordCheck = password => password.trim().length >= 8;
+
+export const validatePreviewDescription = description => {
+  return description.length < 80
+    ? description
+    : `${description.slice(0, 80).trim()}...`;
+};
