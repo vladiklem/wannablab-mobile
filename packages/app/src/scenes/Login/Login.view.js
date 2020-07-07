@@ -9,6 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import firebase from 'firebase';
 
 import colors from '../../theme/colors';
 import FBLoginButton from '../../components/FBLoginButton/FBLoginButton';

@@ -4,12 +4,14 @@ import { View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Button from '../../../../components/Button/Button';
 
+import { validatePreviewDescription } from '../../../../utils/validation';
+
 import DateTime from '../DateTime/DateTime';
 import ActionDots from '../ActionDots/ActionDots';
 
 import styles from './EventCard.styles';
 
-const EventCard = () => {
+const EventCard = ({ topic, description, isNow }) => {
   return (
     <TouchableWithoutFeedback>
       <View style={styles.container}>
@@ -26,12 +28,12 @@ const EventCard = () => {
             style={styles.avatar}
             source={require('../../../../assets/images/avatar.jpg')}
           />
-          <DateTime />
+          <DateTime isNow={isNow} />
         </View>
         <View>
-          <Text style={styles.title}>Dream and successful</Text>
+          <Text style={styles.title}>{topic}</Text>
           <Text style={styles.description}>
-            Dreaming big is a first step to success.
+            {validatePreviewDescription(description)}
           </Text>
         </View>
       </View>

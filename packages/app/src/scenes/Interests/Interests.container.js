@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getInterests } from '../../store/interests/actions';
 import { updateUser } from '../../store/user/actions';
 import { routeName as EVENTLIST } from '../EventList/EventList.container';
+import TabNavigator, { routeName as TAB } from '../../router/TabNavigator';
 
 import InterestsView from './Interests.view';
 
@@ -23,7 +24,7 @@ const Interests = ({ navigation }) => {
   }, [interests]);
 
   const openHome = () => navigation.navigate(HOME);
-  const openEventList = () => navigation.navigate(EVENTLIST);
+  const openEventList = () => navigation.navigate(TAB, { screen: 'EVENTLIST' });
 
   const onSave = useCallback(() => {
     const userInterestsActiveNames = userInterests
