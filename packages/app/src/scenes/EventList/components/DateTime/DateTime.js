@@ -3,19 +3,23 @@ import { View, Text, Image } from 'react-native';
 
 import styles from './DateTime.styles';
 
-const DateTime = ({ date, time }) => {
+const DateTime = ({ date, time, isNow }) => {
   const timeStyle = time ? styles.timeNumber : styles.timeNow;
 
   return (
     <View style={styles.container}>
       <View style={styles.dateContainer}>
-        {date ? (
-          <Text>{date}</Text>
-        ) : (
+        {isNow ? (
           <Image source={require('../../../../assets/icons/fire.png')} />
+        ) : (
+          <Text>{date}</Text>
         )}
       </View>
-      <Text style={timeStyle}>now</Text>
+      {isNow ? (
+        <Text style={timeStyle}>now</Text>
+      ) : (
+        <Text style={timeStyle}>{time}</Text>
+      )}
     </View>
   );
 };
